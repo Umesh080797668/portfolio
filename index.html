@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imantha Umesh | Full Stack Developer</title>
+    <meta name="description" content="Portfolio of Imantha Umesh, a Full Stack Developer specializing in web development and design">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="loading">
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <h2 class="glitch-text">IMANTHA UMESH</h2>
+            <div class="loader-bar"></div>
+            <p class="loading-text">Loading Experience<span class="dots">...</span></p>
+        </div>
+    </div>
+
+    <!-- Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#hero">IU</a>
+            </div>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#skills" class="mobile-nav-link">Skills</a>
+            <a href="#projects" class="mobile-nav-link">Projects</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section with 3D Elements -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="outline">Imantha</span>
+                <span class="filled">Umesh</span>
+            </h1>
+            <div class="hero-subtitle">
+                <div class="text-reveal">Full Stack Developer</div>
+                <div class="text-animation">
+                    <span>Web Developer</span>
+                    <span>UI/UX Designer</span>
+                    <span>Creative Coder</span>
+                </div>
+            </div>
+            <p class="hero-description">Transforming ideas into immersive digital experiences</p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn primary-btn">View My Work</a>
+                <a href="#contact" class="btn outline-btn">Contact Me</a>
+            </div>
+        </div>
+        <div class="hero-3d-container">
+            <canvas id="hero-webgl"></canvas>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="section-header">
+            <h2 class="section-title">About <span class="highlight">Me</span></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="about-container">
+            <div class="about-image-container">
+                <div class="about-image-wrapper">
+                    <img src="assets/images/profile.jpg" alt="Imantha Umesh" class="about-image">
+                    <div class="image-glitch-effect"></div>
+                </div>
+                <div class="floating-elements">
+                    <div class="floating-element html">HTML</div>
+                    <div class="floating-element css">CSS</div>
+                    <div class="floating-element js">JS</div>
+                    <div class="floating-element angular">Angular</div>
+                    <div class="floating-element php">PHP</div>
+                </div>
+            </div>
+            <div class="about-content">
+                <h3 class="about-heading">Hi, I'm Imantha</h3>
+                <p class="about-text">
+                    A motivated and enthusiastic web developer with a strong passion for software development, graphic design, and MS Office applications. Currently pursuing a Bachelor's degree in Information Technology at the University of Colombo (External).
+                </p>
+                <p class="about-text">
+                    I'm dedicated to continuous learning and eager to contribute to development teams in creating innovative web solutions. With a keen eye for detail and a creative mindset, I aim to combine design aesthetics with seamless user experiences.
+                </p>
+                <div class="about-details">
+                    <div class="detail">
+                        <span class="detail-label">Name:</span>
+                        <span class="detail-value">Imantha Umesh</span>
+                    </div>
+                    <div class="detail">
+                        <span class="detail-label">Location:</span>
+                        <span class="detail-value">Ambagamuwa, Ginigathhena, Central Province, Sri Lanka</span>
+                    </div>
+                    <div class="detail">
+                        <span class="detail-label">Email:</span>
+                        <span class="detail-value">Umeshbandara08@gmail.com</span>
+                    </div>
+                    <div class="detail">
+                        <span class="detail-label">Phone:</span>
+                        <span class="detail-value">+94 704 124 816</span>
+                    </div>
+                </div>
+                <div class="about-cta">
+                    <a href="assets/resume.pdf" class="btn primary-btn" download>Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section with 3D Elements -->
+    <section id="skills" class="skills-section">
+        <div class="section-header">
+            <h2 class="section-title">My <span class="highlight">Skills</span></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="skills-container">
+            <div class="skills-3d-container">
+                <canvas id="skills-webgl"></canvas>
+            </div>
+            <div class="skills-content">
+                <div class="skills-category">
+                    <h3 class="category-title">Frontend Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="HTML">
+                            <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                            <div class="skill-info">
+                                <h4>HTML</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="CSS">
+                            <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                            <div class="skill-info">
+                                <h4>CSS</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="JavaScript">
+                            <div class="skill-icon"><i class="fab fa-js"></i></div>
+                            <div class="skill-info">
+                                <h4>JavaScript</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="Bootstrap">
+                            <div class="skill-icon"><i class="fab fa-bootstrap"></i></div>
+                            <div class="skill-info">
+                                <h4>Bootstrap</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="Angular">
+                            <div class="skill-icon"><i class="fab fa-angular"></i></div>
+                            <div class="skill-info">
+                                <h4>Angular</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3 class="category-title">Backend Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="PHP">
+                            <div class="skill-icon"><i class="fab fa-php"></i></div>
+                            <div class="skill-info">
+                                <h4>PHP</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="SQL">
+                            <div class="skill-icon"><i class="fas fa-database"></i></div>
+                            <div class="skill-info">
+                                <h4>SQL</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="Java">
+                            <div class="skill-icon"><i class="fab fa-java"></i></div>
+                            <div class="skill-info">
+                                <h4>Java</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3 class="category-title">Design Tools</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="Figma">
+                            <div class="skill-icon"><i class="fab fa-figma"></i></div>
+                            <div class="skill-info">
+                                <h4>Figma</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="Photoshop">
+                            <div class="skill-icon"><i class="fas fa-paint-brush"></i></div>
+                            <div class="skill-info">
+                                <h4>Photoshop</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="Illustrator">
+                            <div class="skill-icon"><i class="fas fa-bezier-curve"></i></div>
+                            <div class="skill-info">
+                                <h4>Illustrator</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3 class="category-title">Soft Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="Team Leadership">
+                            <div class="skill-icon"><i class="fas fa-users"></i></div>
+                            <div class="skill-info">
+                                <h4>Team Leadership</h4>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="Project Management">
+                            <div class="skill-icon"><i class="fas fa-tasks"></i></div>
+                            <div class="skill-info">
+                                <h4>Project Management</h4>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="Communication">
+                            <div class="skill-icon"><i class="fas fa-comments"></i></div>
+                            <div class="skill-info">
+                                <h4>Interpersonal Relationship</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="section-header">
+            <h2 class="section-title">My <span class="highlight">Projects</span></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="projects-container">
+            <div class="project-card" data-project-url="https://profound-cat-1bf930.netlify.app/">
+                <div class="project-image">
+                    <img src="assets/images/project1.jpg" alt="Project 1">
+                    <div class="project-overlay">
+                        <div class="overlay-content">
+                            <a href="https://profound-cat-1bf930.netlify.app/" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Project Title 1</h3>
+                    <p class="project-description">A description of your first project showcasing your skills in web development.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project-url="https://imantha.42web.io/">
+                <div class="project-image">
+                    <img src="assets/images/project2.jpg" alt="Project 2">
+                    <div class="project-overlay">
+                        <div class="overlay-content">
+                            <a href="https://imantha.42web.io/" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Project Title 2</h3>
+                    <p class="project-description">A description of your second project showcasing your skills in web development.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project-url="http://imantha.getenjoyment.net/">
+                <div class="project-image">
+                    <img src="assets/images/project3.jpg" alt="Project 3">
+                    <div class="project-overlay">
+                        <div class="overlay-content">
+                            <a href="http://imantha.getenjoyment.net/" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Project Title 3</h3>
+                    <p class="project-description">A description of your third project showcasing your skills in web development.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+        <div class="section-header">
+            <h2 class="section-title">Education & <span class="highlight">Certifications</span></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="education-container">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content appear-animation">
+                        <h3 class="timeline-title">Bachelor of Information Technology</h3>
+                        <h4 class="timeline-subtitle">University of Colombo (External)</h4>
+                        <p class="timeline-date">Current</p>
+                        <p class="timeline-description">
+                            Currently pursuing a bachelor's degree in Information Technology.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content appear-animation">
+                        <h3 class="timeline-title">Full Stack Web Development</h3>
+                        <h4 class="timeline-subtitle">Developers Stack</h4>
+                        <p class="timeline-date">Present</p>
+                        <p class="timeline-description">
+                            Diploma in ICT at IMBS GREEN CAMPUS
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content appear-animation">
+                        <h3 class="timeline-title">Diploma in ICT</h3>
+                        <h4 class="timeline-subtitle">ESOFT METRO CAMPUS</h4>
+                        <p class="timeline-date">2021</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content appear-animation">
+                        <h3 class="timeline-title">Certificate in Web Design</h3>
+                        <h4 class="timeline-subtitle">Warlton College</h4>
+                        <p class="timeline-date">2022</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content appear-animation">
+                        <h3 class="timeline-title">Certificate in 3D Animation and Game Designing</h3>
+                        <h4 class="timeline-subtitle">Warlton College</h4>
+                        <p class="timeline-date">2022</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content appear-animation">
+                        <h3 class="timeline-title">G.C.E (O/L) Examination</h3>
+                        <p class="timeline-date">2020</p>
+                        <div class="education-details">
+                            <div class="education-detail">
+                                <span>Health</span>
+                                <span>A</span>
+                            </div>
+                            <div class="education-detail">
+                                <span>Mathematics</span>
+                                <span>B</span>
+                            </div>
+                            <div class="education-detail">
+                                <span>English</span>
+                                <span>B</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="section-header">
+            <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 class="contact-heading">Let's Talk</h3>
+                <p class="contact-text">
+                    Feel free to reach out if you're looking for a developer, have a question, or just want to connect.
+                </p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Location</h4>
+                            <p>Ambagamuwa, Ginigathhena, Sri Lanka</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Email</h4>
+                            <p>Umeshbandara08@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Phone</h4>
+                            <p>+94 704 124 816</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/imantha-umesh-26356320b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Umesh080797668" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.facebook.com/imantha.umesh.31?sfnsn=wa&mibextid=RUbZ1f" class="social-link" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/imantha_umesh?igsh=NTNnMHUzMTJrYWFh" class="social-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="contact-form-container">
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <div class="form-field">
+                            <input type="text" id="name" name="name" required class="form-input">
+                            <label for="name" class="form-label">Your Name</label>
+                            <div class="form-line"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-field">
+                            <input type="email" id="email" name="email" required class="form-input">
+                            <label for="email" class="form-label">Your Email</label>
+                            <div class="form-line"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-field">
+                            <input type="text" id="subject" name="subject" required class="form-input">
+                            <label for="subject" class="form-label">Subject</label>
+                            <div class="form-line"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-field">
+                            <textarea id="message" name="message" required class="form-input form-textarea"></textarea>
+                            <label for="message" class="form-label">Your Message</label>
+                            <div class="form-line"></div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn primary-btn submit-btn">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+                <div class="form-3d-element">
+                    <canvas id="contact-webgl"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <a href="#hero">IU</a>
+                </div>
+                <div class="footer-nav">
+                    <a href="#about" class="footer-link">About</a>
+                    <a href="#skills" class="footer-link">Skills</a>
+                    <a href="#projects" class="footer-link">Projects</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Imantha Umesh. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top" class="back-to-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- WhatsApp Contact Button -->
+    <a href="https://wa.me/94704124816" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" title="Contact me on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span>Chat with me</span>
+    </a>
+
+    <!-- AI Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle">
+            <span class="toggle-icon"><i class="fas fa-robot"></i></span>
+            <span class="toggle-close"><i class="fas fa-times"></i></span>
+        </div>
+
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-title">
+                    <div class="bot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="bot-info">
+                        <h3>Portfolio AI</h3>
+                        <p>Typically replies instantly</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chatbot-messages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        Hi there! I'm Imantha's personal AI assistant. How can I help you today?
+                    </div>
+                </div>
+            </div>
+
+            <div class="chatbot-input">
+                <form id="chatbot-form">
+                    <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off">
+                    <button type="submit" class="send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+
+    <script>
+        const form = document.getElementById('contact-form');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+
+            // Show sending state
+            submitBtn.innerHTML = '<span>Sending...</span> <i class="fas fa-circle-notch fa-spin"></i>';
+            submitBtn.disabled = true;
+
+            // Formspree AJAX submission
+            fetch("https://formspree.io/f/mzzreakj", {
+                    method: "POST",
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fas fa-check"></i>';
+                        submitBtn.classList.add('success');
+                        form.reset();
+
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('success');
+                        }, 3000);
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                })
+                .catch(error => {
+                    submitBtn.innerHTML = '<span>Failed to Send</span> <i class="fas fa-times"></i>';
+                    submitBtn.classList.add('error');
+
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('error');
+                    }, 3000);
+
+                    console.error("Form submission error:", error);
+                });
+        });
+
+        // Back to Top Button
+        function initBackToTop() {
+            const backToTopBtn = document.getElementById('back-to-top');
+
+            if (!backToTopBtn) return;
+
+            // Show/hide button based on scroll position
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('active');
+                } else {
+                    backToTopBtn.classList.remove('active');
+                }
+            });
+
+            // Scroll to top when clicked
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Initialize back to top
+        document.addEventListener('DOMContentLoaded', initBackToTop);
+    </script>
+</body>
+
+</html>
