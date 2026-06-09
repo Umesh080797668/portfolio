@@ -157,236 +157,272 @@
 
     <!-- Skills Section with 3D Elements -->
     <section id="skills" class="skills-section">
-        <div class="section-header">
-            <h2 class="section-title">My <span class="highlight">Skills</span></h2>
-            <div class="section-divider"></div>
+    <div class="section-header">
+        <h2 class="section-title">My <span class="highlight">Skills</span></h2>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="skills-container">
+        <div class="skills-3d-container">
+            <canvas id="skills-webgl"></canvas>
         </div>
-        <div class="skills-container">
-            <div class="skills-3d-container">
-                <canvas id="skills-webgl"></canvas>
-            </div>
-            <div class="skills-content">
-                <div class="skills-category">
-                    <h3 class="category-title">Frontend Development</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item" data-skill="HTML">
-                            <div class="skill-icon"><i class="fab fa-html5"></i></div>
-                            <div class="skill-info">
-                                <h4>HTML</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 95%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="CSS">
-                            <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-                            <div class="skill-info">
-                                <h4>CSS</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 90%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="JavaScript">
-                            <div class="skill-icon"><i class="fab fa-js"></i></div>
-                            <div class="skill-info">
-                                <h4>JavaScript</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="Bootstrap">
-                            <div class="skill-icon"><i class="fab fa-bootstrap"></i></div>
-                            <div class="skill-info">
-                                <h4>Bootstrap</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 90%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="Angular">
-                            <div class="skill-icon"><i class="fab fa-angular"></i></div>
-                            <div class="skill-info">
-                                <h4>Angular</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 70%;"></div>
-                                </div>
+
+        <div class="skills-content">
+
+            <!-- Frontend -->
+            <div class="skills-category">
+                <h3 class="category-title">Frontend Development</h3>
+                <div class="skills-grid">
+
+                    <div class="skill-item" data-skill="HTML">
+                        <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                        <div class="skill-info">
+                            <h4>HTML</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:95%"></div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="skills-category">
-                    <h3 class="category-title">Backend Development</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item" data-skill="PHP">
-                            <div class="skill-icon"><i class="fab fa-php"></i></div>
-                            <div class="skill-info">
-                                <h4>PHP</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="SQL">
-                            <div class="skill-icon"><i class="fas fa-database"></i></div>
-                            <div class="skill-info">
-                                <h4>SQL</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="Java">
-                            <div class="skill-icon"><i class="fab fa-java"></i></div>
-                            <div class="skill-info">
-                                <h4>Java</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%;"></div>
-                                                        <div class="skill-item" data-skill="Node.js">
-                                                            <div class="skill-icon"><i class="fab fa-node-js"></i></div>
-                                                            <div class="skill-info">
-                                                                <h4>Node.js</h4>
-                                                                <div class="skill-bar">
-                                                                    <div class="skill-progress" style="width: 85%;"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="skill-item" data-skill="Spring Boot">
-                                                            <div class="skill-icon"><i class="fas fa-leaf"></i></div>
-                                                            <div class="skill-info">
-                                                                <h4>Spring Boot</h4>
-                                                                <div class="skill-bar">
-                                                                    <div class="skill-progress" style="width: 78%;"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                </div>
+                    <div class="skill-item" data-skill="CSS">
+                        <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                        <div class="skill-info">
+                            <h4>CSS</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:90%"></div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="skills-category">
-                    <h3 class="category-title">Design Tools</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item" data-skill="Figma">
-                            <div class="skill-icon"><i class="fab fa-figma"></i></div>
-                            <div class="skill-info">
-                                <h4>Figma</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="Photoshop">
-                            <div class="skill-icon"><i class="fas fa-paint-brush"></i></div>
-                            <div class="skill-info">
-                                <h4>Photoshop</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="Illustrator">
-                            <div class="skill-icon"><i class="fas fa-bezier-curve"></i></div>
-                            <div class="skill-info">
-                                <h4>Illustrator</h4>
-                                                        <div class="skill-item" data-skill="Canva">
-                                                            <div class="skill-icon"><i class="fas fa-image"></i></div>
-                                                            <div class="skill-info">
-                                                                <h4>Canva</h4>
-                                                                <div class="skill-bar">
-                                                                    <div class="skill-progress" style="width: 82%;"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="skills-category">
-                                                    <h3 class="category-title">AI & Advanced Tools</h3>
-                                                    <div class="skills-grid">
-                                                        <div class="skill-item" data-skill="GitHub Copilot">
-                                                            <div class="skill-icon"><i class="fab fa-github"></i></div>
-                                                            <div class="skill-info">
-                                                                <h4>GitHub Copilot</h4>
-                                                                <div class="skill-bar">
-                                                                    <div class="skill-progress" style="width: 90%;"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="skill-item" data-skill="Claude AI">
-                                                            <div class="skill-icon"><i class="fas fa-brain"></i></div>
-                                                            <div class="skill-info">
-                                                                <h4>Claude AI</h4>
-                                                                <div class="skill-bar">
-                                                                    <div class="skill-progress" style="width: 88%;"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="skill-item" data-skill="Docker">
-                                                            <div class="skill-icon"><i class="fab fa-docker"></i></div>
-                                                            <div class="skill-info">
-                                                                <h4>Docker</h4>
-                                                                <div class="skill-bar">
-                                                                    <div class="skill-progress" style="width: 82%;"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="skill-item" data-skill="REST APIs">
-                                                            <div class="skill-icon"><i class="fas fa-plug"></i></div>
-                                                            <div class="skill-info">
-                                                                <h4>REST APIs</h4>
-                                                                <div class="skill-bar">
-                                                                    <div class="skill-progress" style="width: 87%;"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="skill-item" data-skill="Git/GitHub">
-                                                            <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
-                                                            <div class="skill-info">
-                                                                <h4>Git/GitHub</h4>
-                                                                <div class="skill-bar">
-                                                                    <div class="skill-progress" style="width: 90%;"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%;"></div>
-                                </div>
+                    <div class="skill-item" data-skill="JavaScript">
+                        <div class="skill-icon"><i class="fab fa-js"></i></div>
+                        <div class="skill-info">
+                            <h4>JavaScript</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:85%"></div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="skills-category">
-                    <h3 class="category-title">Soft Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item" data-skill="Team Leadership">
-                            <div class="skill-icon"><i class="fas fa-users"></i></div>
-                            <div class="skill-info">
-                                <h4>Team Leadership</h4>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="Project Management">
-                            <div class="skill-icon"><i class="fas fa-tasks"></i></div>
-                            <div class="skill-info">
-                                <h4>Project Management</h4>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="Communication">
-                            <div class="skill-icon"><i class="fas fa-comments"></i></div>
-                            <div class="skill-info">
-                                <h4>Interpersonal Relationship</h4>
+                    <div class="skill-item" data-skill="Bootstrap">
+                        <div class="skill-icon"><i class="fab fa-bootstrap"></i></div>
+                        <div class="skill-info">
+                            <h4>Bootstrap</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:90%"></div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="skill-item" data-skill="Angular">
+                        <div class="skill-icon"><i class="fab fa-angular"></i></div>
+                        <div class="skill-info">
+                            <h4>Angular</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:70%"></div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
+            <!-- Backend -->
+            <div class="skills-category">
+                <h3 class="category-title">Backend Development</h3>
+                <div class="skills-grid">
+
+                    <div class="skill-item" data-skill="PHP">
+                        <div class="skill-icon"><i class="fab fa-php"></i></div>
+                        <div class="skill-info">
+                            <h4>PHP</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:80%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item" data-skill="SQL">
+                        <div class="skill-icon"><i class="fas fa-database"></i></div>
+                        <div class="skill-info">
+                            <h4>SQL</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item" data-skill="Java">
+                        <div class="skill-icon"><i class="fab fa-java"></i></div>
+                        <div class="skill-info">
+                            <h4>Java</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:80%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item" data-skill="Node.js">
+                        <div class="skill-icon"><i class="fab fa-node-js"></i></div>
+                        <div class="skill-info">
+                            <h4>Node.js</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item" data-skill="Spring Boot">
+                        <div class="skill-icon"><i class="fas fa-leaf"></i></div>
+                        <div class="skill-info">
+                            <h4>Spring Boot</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:78%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Design -->
+            <div class="skills-category">
+                <h3 class="category-title">Design Tools</h3>
+                <div class="skills-grid">
+
+                    <div class="skill-item" data-skill="Figma">
+                        <div class="skill-icon"><i class="fab fa-figma"></i></div>
+                        <div class="skill-info">
+                            <h4>Figma</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item" data-skill="Photoshop">
+                        <div class="skill-icon"><i class="fas fa-paint-brush"></i></div>
+                        <div class="skill-info">
+                            <h4>Photoshop</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:80%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item" data-skill="Illustrator">
+                        <div class="skill-icon"><i class="fas fa-bezier-curve"></i></div>
+                        <div class="skill-info">
+                            <h4>Illustrator</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:75%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item" data-skill="Canva">
+                        <div class="skill-icon"><i class="fas fa-image"></i></div>
+                        <div class="skill-info">
+                            <h4>Canva</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:82%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- AI & Advanced -->
+            <div class="skills-category">
+                <h3 class="category-title">AI & Advanced Tools</h3>
+                <div class="skills-grid">
+
+                    <div class="skill-item" data-skill="GitHub Copilot">
+                        <div class="skill-icon"><i class="fab fa-github"></i></div>
+                        <div class="skill-info">
+                            <h4>GitHub Copilot</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:90%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item" data-skill="Claude AI">
+                        <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                        <div class="skill-info">
+                            <h4>Claude AI</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:88%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item" data-skill="Docker">
+                        <div class="skill-icon"><i class="fab fa-docker"></i></div>
+                        <div class="skill-info">
+                            <h4>Docker</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:82%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item" data-skill="REST APIs">
+                        <div class="skill-icon"><i class="fas fa-plug"></i></div>
+                        <div class="skill-info">
+                            <h4>REST APIs</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:87%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item" data-skill="Git/GitHub">
+                        <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+                        <div class="skill-info">
+                            <h4>Git/GitHub</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width:90%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Soft Skills -->
+            <div class="skills-category">
+                <h3 class="category-title">Soft Skills</h3>
+                <div class="skills-grid">
+
+                    <div class="skill-item" data-skill="Team Leadership">
+                        <div class="skill-icon"><i class="fas fa-users"></i></div>
+                        <div class="skill-info">
+                            <h4>Team Leadership</h4>
+                        </div>
+                    </div>
+
+                    <div class="skill-item" data-skill="Project Management">
+                        <div class="skill-icon"><i class="fas fa-tasks"></i></div>
+                        <div class="skill-info">
+                            <h4>Project Management</h4>
+                        </div>
+                    </div>
+
+                    <div class="skill-item" data-skill="Communication">
+                        <div class="skill-icon"><i class="fas fa-comments"></i></div>
+                        <div class="skill-info">
+                            <h4>Interpersonal Relationship</h4>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Projects Section -->
     <section id="projects" class="projects-section">
@@ -533,7 +569,7 @@
 
             <div class="project-card" data-project-url="https://github.com/Umesh080797668/sarasavi_LMS">
                 <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1516534775068-bb57ce3b5d1d?w=500&h=300&fit=crop" alt="Sarasavi LMS Project">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" alt="Sarasavi LMS">
                     <div class="project-overlay">
                         <div class="overlay-content">
                             <a href="https://github.com/Umesh080797668/sarasavi_LMS" target="_blank" class="project-link">
