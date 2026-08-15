@@ -31,6 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize form animations
     initFormAnimations();
+
+    // Initialize testimonial email protection/reveal
+    initTestimonialEmails();
+
+    // Initialize testimonials carousel
+    initTestimonialsCarousel();
 });
 
 /**
@@ -567,4 +573,196 @@ function initFormAnimations() {
             card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
         });
     });
+}
+
+/**
+ * Testimonial email protection.
+ *
+ * Emails are never written as plain text in the HTML/JS source (which is
+ * exactly what scraper bots grep for). Each address is split into
+ * `data-user` and `data-domain` attributes on the button and only joined
+ * together in memory, at click time, inside this handler. That keeps a
+ * complete "user@domain" string out of the page's static markup entirely.
+ *
+ * On first click the real address is revealed and copied to the
+ * clipboard. On a second click it opens the user's mail client via a
+ * mailto: link that is also built on the fly rather than stored anywhere.
+ */
+function initTestimonialEmails() {
+    const emailButtons = document.querySelectorAll('.testimonial-email');
+
+    emailButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const textEl = button.querySelector('.email-text');
+            const user = button.getAttribute('data-user');
+            const domain = button.getAttribute('data-domain');
+            const address = `${user}@${domain}`;
+
+            if (!button.classList.contains('revealed')) {
+                // First click: reveal + copy to clipboard
+                button.classList.add('revealed');
+                textEl.textContent = address;
+
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(address).catch(() => {});
+                }
+
+                const original = textEl.textContent;
+                button.setAttribute('title', 'Copied — click again to email');
+                setTimeout(() => {
+                    if (textEl.textContent === original) {
+                        button.setAttribute('title', 'Click to email');
+                    }
+                }, 2000);
+            } else {
+                // Second click: hand off to the mail client
+                window.location.href = `mailto:${address}`;
+            }
+        });
+    });
+}
+
+/**
+ * Testimonials carousel.
+ *
+ * Vanilla JS, no external library — shows N cards at a time depending on
+ * viewport width, slides by a full "page" of cards on arrow/dot clicks,
+ * and supports touch swipe on mobile.
+ */
+function initTestimonialsCarousel() {
+    const carousel = document.querySelector('.testimonials-carousel');
+    if (!carousel) return;
+
+    const viewport = carousel.querySelector('.testimonials-viewport');
+    const track = carousel.querySelector('.testimonials-track');
+    const cards = Array.from(track.querySelectorAll('.testimonial-card'));
+    const prevBtn = carousel.querySelector('.carousel-arrow-prev');
+    const nextBtn = carousel.querySelector('.carousel-arrow-next');
+    const dotsContainer = document.querySelector('.carousel-dots');
+    const gap = 32; // matches the 2rem gap in CSS
+
+    if (!cards.length) return;
+
+    let itemsPerView = 3;
+    let currentIndex = 0;
+    let maxIndex = 0;
+
+    function getItemsPerView() {
+        const width = window.innerWidth;
+        if (width < 700) return 1;
+        if (width < 1100) return 2;
+        return 3;
+    }
+
+    function layout() {
+        itemsPerView = Math.min(getItemsPerView(), cards.length);
+        maxIndex = Math.max(cards.length - itemsPerView, 0);
+        currentIndex = Math.min(currentIndex, maxIndex);
+
+        const viewportWidth = viewport.clientWidth;
+        const cardWidth = (viewportWidth - gap * (itemsPerView - 1)) / itemsPerView;
+
+        cards.forEach(card => {
+            card.style.flex = `0 0 ${cardWidth}px`;
+        });
+
+        buildDots();
+        goTo(currentIndex, false);
+    }
+
+    function buildDots() {
+        if (!dotsContainer) return;
+        const pageCount = maxIndex + 1;
+
+        dotsContainer.innerHTML = '';
+
+        // Only show a dot per page (step-of-itemsPerView), not per card
+        const pages = [];
+        for (let i = 0; i <= maxIndex; i += itemsPerView) {
+            pages.push(Math.min(i, maxIndex));
+        }
+        if (pages[pages.length - 1] !== maxIndex) pages.push(maxIndex);
+
+        pages.forEach((pageIndex) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'carousel-dot';
+            dot.setAttribute('aria-label', `Go to testimonial ${pageIndex + 1}`);
+            dot.addEventListener('click', () => goTo(pageIndex, true));
+            dotsContainer.appendChild(dot);
+        });
+
+        void pageCount; // reserved for future use (e.g. progress display)
+    }
+
+    function updateDots() {
+        if (!dotsContainer) return;
+        const dots = Array.from(dotsContainer.children);
+        if (!dots.length) return;
+
+        // Highlight the dot whose page start is closest to currentIndex
+        let closest = 0;
+        let closestDiff = Infinity;
+        dots.forEach((dot, i) => {
+            const step = i * itemsPerView;
+            const target = Math.min(step, maxIndex);
+            const diff = Math.abs(target - currentIndex);
+            if (diff < closestDiff) {
+                closestDiff = diff;
+                closest = i;
+            }
+        });
+
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === closest));
+    }
+
+    function updateArrows() {
+        if (prevBtn) prevBtn.disabled = currentIndex <= 0;
+        if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
+    }
+
+    function goTo(index, animate) {
+        currentIndex = Math.max(0, Math.min(index, maxIndex));
+
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        const offset = currentIndex * (cardWidth + gap);
+
+        track.style.transition = animate ? 'transform 0.45s ease' : 'none';
+        track.style.transform = `translateX(-${offset}px)`;
+
+        updateArrows();
+        updateDots();
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => goTo(currentIndex - itemsPerView, true));
+    }
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => goTo(currentIndex + itemsPerView, true));
+    }
+
+    // Touch swipe support
+    let touchStartX = 0;
+    viewport.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const delta = touchEndX - touchStartX;
+        if (Math.abs(delta) < 40) return;
+        if (delta < 0) {
+            goTo(currentIndex + itemsPerView, true);
+        } else {
+            goTo(currentIndex - itemsPerView, true);
+        }
+    }, { passive: true });
+
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(layout, 150);
+    });
+
+    layout();
 }
