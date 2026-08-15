@@ -14,29 +14,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }, 3000);
 
-    // Initialize custom cursor
-    initCursor();
+    // Each init() is wrapped in its own try/catch so that a failure in one
+    // feature (e.g. a blocked CDN script, a missing global like THREE/gsap)
+    // cannot silently prevent every init() that runs after it in this list.
+    // Without this, one early throw would kill unrelated later features
+    // (e.g. initThreeJS failing used to take down initTestimonialsCarousel).
+    const initializers = [
+        { name: 'initCursor', fn: initCursor },
+        { name: 'initNavigation', fn: initNavigation },
+        { name: 'initScrollAnimations', fn: initScrollAnimations },
+        { name: 'initThreeJS', fn: initThreeJS },
+        { name: 'initParticles', fn: initParticles },
+        { name: 'initFormAnimations', fn: initFormAnimations },
+        { name: 'initTestimonialEmails', fn: initTestimonialEmails },
+        { name: 'initTestimonialsCarousel', fn: initTestimonialsCarousel }
+    ];
 
-    // Initialize navigation
-    initNavigation();
-
-    // Initialize scroll animations
-    initScrollAnimations();
-
-    // Initialize Three.js scenes
-    initThreeJS();
-
-    // Initialize particle background
-    initParticles();
-
-    // Initialize form animations
-    initFormAnimations();
-
-    // Initialize testimonial email protection/reveal
-    initTestimonialEmails();
-
-    // Initialize testimonials carousel
-    initTestimonialsCarousel();
+    initializers.forEach(({ name, fn }) => {
+        try {
+            fn();
+        } catch (err) {
+            console.error(`[main.js] ${name}() failed and was skipped:`, err);
+        }
+    });
 });
 
 /**

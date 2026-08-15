@@ -40,6 +40,7 @@
     html {
         scroll-behavior: smooth;
         scroll-padding-top: 80px;
+        overflow-x: hidden;
     }
     
     body {
@@ -744,11 +745,13 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
+        min-width: 0;
     }
     
     .detail {
         display: flex;
         flex-direction: column;
+        min-width: 0;
     }
     
     .detail-label {
@@ -762,6 +765,8 @@
         font-size: 1rem;
         font-weight: 600;
         color: var(--text);
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
     
     .about-cta {
@@ -1340,6 +1345,26 @@
         flex-direction: column;
         position: relative;
         flex-shrink: 0;
+        /* CSS-only fallback so the card never relies solely on JS-computed
+           inline widths to avoid overflowing the viewport. Matches the
+           itemsPerView breakpoints used in initTestimonialsCarousel(). */
+        min-width: 0;
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    @media (min-width: 700px) {
+        .testimonial-card {
+            flex-basis: calc(50% - 1rem);
+            max-width: calc(50% - 1rem);
+        }
+    }
+
+    @media (min-width: 1100px) {
+        .testimonial-card {
+            flex-basis: calc(33.333% - 1.334rem);
+            max-width: calc(33.333% - 1.334rem);
+        }
     }
 
     .testimonial-card:hover {
@@ -1691,7 +1716,8 @@
     
     .footer-nav {
         display: flex;
-        gap: 2rem;
+        flex-wrap: wrap;
+        gap: 0.75rem 2rem;
     }
     
     .footer-link {
@@ -1729,6 +1755,7 @@
             margin: 0 auto;
         }
         .skills-3d-container {
+            min-height: 0;
             height: 300px;
         }
         .timeline::before {
@@ -1960,6 +1987,12 @@
         right: 0;
         width: 350px;
         height: 500px;
+        /* The window's bottom edge sits ~180px above the viewport bottom
+           (container's bottom:100px + window's bottom:80px). Without a cap,
+           the fixed 500px height pushes the top of the window off-screen
+           on short viewports (e.g. landscape phones). */
+        max-height: calc(100vh - 160px);
+        max-width: calc(100vw - 40px);
         background-color: var(--card-bg);
         border-radius: 15px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -2156,7 +2189,7 @@
     @media (max-width: 480px) {
         .chatbot-window {
             width: 300px;
-            right: -15px;
+            right: 0;
         }
     }
     
