@@ -1,0 +1,13 @@
+# Netlify Deployment Configuration for TechAssist LK Portfolio
+[build]
+  publish = "."
+  # This command reads your Netlify Environment Variables at build time
+  # and writes them to js/env.js (which is ignored by Git, keeping secrets private)
+  command = "node -e \"const fs = require('fs'); const env = { CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME || '', CLOUDINARY_UPLOAD_PRESET: process.env.CLOUDINARY_UPLOAD_PRESET || '', CLOUDINARY_FOLDER: process.env.CLOUDINARY_FOLDER || 'techassist_lk/tasks', SUPABASE_URL: process.env.SUPABASE_URL || '', SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY || '', ADMIN_TRACKER_PIN: process.env.ADMIN_TRACKER_PIN || '2026', ADMIN_WHATSAPP_NUMBER: process.env.ADMIN_WHATSAPP_NUMBER || '94704124816' }; fs.writeFileSync('js/env.js', 'window.__ENV__ = ' + JSON.stringify(env) + ';');\""
+
+# Optional redirect rules
+[[redirects]]
+  from = "/track"
+  to = "/services.html#track"
+  status = 301
+

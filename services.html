@@ -692,112 +692,12 @@
         </div>
     </div>
 
-    <!-- Admin Work Tracker Modal -->
-    <div id="admin-tracker-modal" class="admin-tracker-modal">
-        <div class="admin-modal-card">
-            <div class="admin-modal-header">
-                <h2><i class="fas fa-shield-halved" style="color: var(--primary);"></i> Work Tracker Admin Portal</h2>
-                <button type="button" id="admin-modal-close" class="admin-modal-close" aria-label="Close admin modal"><i
-                        class="fas fa-times"></i></button>
-            </div>
-            <div class="admin-modal-body">
-                <!-- PIN Verification View -->
-                <div id="admin-pin-view" class="admin-pin-view">
-                    <i class="fas fa-fingerprint lock-icon"></i>
-                    <h3>Admin Authentication</h3>
-                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.4rem;">Enter your 4-digit
-                        manager PIN to update tasks &amp; generate tracking codes for clients.</p>
-                    <input type="password" id="admin-pin-input" class="admin-pin-input" maxlength="8" placeholder="••••"
-                        autocomplete="off">
-                    <button type="button" id="admin-pin-submit" class="btn primary-btn" style="width: 100%;">Unlock
-                        Portal</button>
-                    <div id="admin-pin-error" class="admin-pin-error"></div>
-                </div>
-
-                <!-- Admin Dashboard View -->
-                <div id="admin-dashboard-view" style="display: none;">
-                    <div class="admin-toolbar">
-                        <div class="admin-stats-row">
-                            <div class="admin-stat-chip">Total Tasks: <strong id="stat-total-tasks">0</strong></div>
-                            <div class="admin-stat-chip">Active: <strong id="stat-active-tasks"
-                                    style="color: var(--secondary);">0</strong></div>
-                            <div class="admin-stat-chip">Delivered: <strong id="stat-completed-tasks"
-                                    style="color: var(--green);">0</strong></div>
-                        </div>
-                        <button type="button" id="btn-toggle-quick-add" class="btn primary-btn btn-sm">
-                            <i class="fas fa-plus"></i> Quick-Add WhatsApp / Offline Task
-                        </button>
-                    </div>
-
-                    <!-- Quick Add Form -->
-                    <div id="admin-quick-add-form" class="admin-quick-add-form">
-                        <h4 style="margin-bottom: 1rem; color: var(--text);"><i class="fab fa-whatsapp"
-                                style="color: var(--green);"></i> Issue Tracking Code for WhatsApp / Direct Client</h4>
-                        <form id="form-quick-add-task">
-                            <div class="q-row">
-                                <div class="q-field">
-                                    <label>Client Name *</label>
-                                    <input type="text" id="qa-name" class="q-input" required
-                                        placeholder="e.g. Kasun Silva">
-                                </div>
-                                <div class="q-field">
-                                    <label>WhatsApp / Phone *</label>
-                                    <input type="tel" id="qa-phone" class="q-input" required
-                                        placeholder="+94 7X XXX XXXX">
-                                </div>
-                            </div>
-                            <div class="q-row">
-                                <div class="q-field">
-                                    <label>Task / Service Title *</label>
-                                    <input type="text" id="qa-title" class="q-input" required
-                                        placeholder="e.g. Assignment Formatting &amp; Excel Analysis">
-                                </div>
-                                <div class="q-field">
-                                    <label>Agreed Budget (LKR)</label>
-                                    <input type="number" id="qa-budget" class="q-input" placeholder="e.g. 10000">
-                                </div>
-                            </div>
-                            <div class="q-row">
-                                <div class="q-field">
-                                    <label>Initial Status</label>
-                                    <select id="qa-status" class="q-select">
-                                        <option value="submitted">1. Request Received</option>
-                                        <option value="reviewing">2. Assessment &amp; Scope Review</option>
-                                        <option value="in_progress" selected>3. In Progress / Working</option>
-                                        <option value="quality_polish">4. Review &amp; Quality Polish</option>
-                                        <option value="completed">5. Ready &amp; Delivered</option>
-                                    </select>
-                                </div>
-                                <div class="q-field">
-                                    <label>Starting Progress (%)</label>
-                                    <input type="number" id="qa-progress" class="q-input" min="0" max="100" value="20">
-                                </div>
-                            </div>
-                            <div class="q-field">
-                                <label>Task Notes &amp; Guidelines</label>
-                                <textarea id="qa-notes" class="q-textarea"
-                                    placeholder="Client instructions, references, or specific requirements..."></textarea>
-                            </div>
-                            <div style="display: flex; justify-content: flex-end; gap: 0.6rem; margin-top: 1rem;">
-                                <button type="submit" class="btn wa-btn">
-                                    <i class="fas fa-barcode"></i> Generate Code &amp; Prepare WhatsApp Message
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Tasks List -->
-                    <div id="admin-tasks-container"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Scripts (no Three.js / particles needed on this page) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <!-- Supabase Realtime Database SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/env.js"></script>
     <script src="js/tracker-config.js"></script>
     <script src="js/tracker-service.js"></script>
     <script src="js/tracker-ui.js"></script>

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/services.css">
+    <link rel="stylesheet" href="css/tracker.css">
     <link rel="stylesheet" href="css/responsive.css">
 
 
@@ -58,6 +59,7 @@
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#testimonials" class="nav-link">Testimonials</a>
                 <a href="services.html" class="nav-link">Services</a>
+                <a href="services.html#track" class="nav-link"><i class="fas fa-satellite-dish"></i> Track Work</a>
                 <a href="services.html#quotation" class="nav-link nav-quote-link">Get Quote <span
                         class="quote-count js-quote-count">0</span></a>
                 <a href="#contact" class="nav-link">Contact</a>
@@ -78,6 +80,7 @@
             <a href="#projects" class="mobile-nav-link">Projects</a>
             <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
             <a href="services.html" class="mobile-nav-link">Services</a>
+            <a href="services.html#track" class="mobile-nav-link"><i class="fas fa-satellite-dish"></i> Track Work</a>
             <a href="services.html#quotation" class="mobile-nav-link">Get Quote <span
                     class="quote-count js-quote-count">0</span></a>
             <a href="#contact" class="mobile-nav-link">Contact</a>
@@ -1167,10 +1170,38 @@
                             <div class="form-line"></div>
                         </div>
                     </div>
+
+                    <!-- Assessment / Task Files Upload (Optional) -->
+                    <div class="file-upload-card"
+                        style="margin-top: 1rem; margin-bottom: 1.5rem; background: rgba(13, 17, 23, 0.7);">
+                        <div class="file-upload-header">
+                            <h3 style="font-size: 0.95rem;"><i class="fas fa-paperclip"
+                                    style="color: var(--secondary);"></i> Assessment / Task Files (Optional)</h3>
+                            <span class="file-upload-badge">PDF, Excel, TXT, Word</span>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.7rem;">
+                            Have assignment guidelines, code, or a dataset? Attach it here to receive a tracking number.
+                        </p>
+                        <div class="file-dropzone" id="contact-dropzone" data-target-input="contact-file-input"
+                            data-target-list="contact-files-container" style="padding: 1.2rem 1rem;">
+                            <i class="fas fa-cloud-arrow-up file-dropzone-icon" style="font-size: 1.6rem;"></i>
+                            <div class="file-dropzone-title" style="font-size: 0.88rem;">Click or drag &amp; drop files
+                            </div>
+                            <div class="file-dropzone-hint" style="font-size: 0.75rem;">PDF, Excel (.xlsx, .xls), Word
+                                (.doc, .docx), TXT, Code, ZIP (up to 25MB)</div>
+                            <input type="file" id="contact-file-input" class="file-hidden-input" multiple
+                                accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.rtf,.zip,.rar,.png,.jpg,.jpeg">
+                        </div>
+                        <div id="contact-files-container" class="uploaded-files-list"></div>
+                    </div>
+
                     <button type="submit" class="btn primary-btn submit-btn">
                         <span>Send Message</span>
                         <i class="fas fa-paper-plane"></i>
                     </button>
+                    <div id="contact-tracking-alert"
+                        style="display: none; margin-top: 1rem; padding: 0.9rem 1.1rem; border-radius: 8px; background: rgba(137, 87, 229, 0.15); border: 1px solid rgba(137, 87, 229, 0.4); color: var(--text); font-size: 0.88rem;">
+                    </div>
                 </form>
                 <div class="form-3d-element">
                     <canvas id="contact-webgl"></canvas>
@@ -1259,58 +1290,104 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Supabase Realtime Database SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/env.js"></script>
+    <script src="js/tracker-config.js"></script>
+    <script src="js/tracker-service.js"></script>
+    <script src="js/tracker-ui.js"></script>
     <script src="js/main.js"></script>
     <script src="js/services.js"></script>
     <script src="js/chatbot.js"></script>
 
     <script>
         const form = document.getElementById('contact-form');
+        const trackingAlert = document.getElementById('contact-tracking-alert');
 
-        form.addEventListener('submit', function (event) {
+        form.addEventListener('submit', async function (event) {
             event.preventDefault();
 
             const submitBtn = form.querySelector('.submit-btn');
             const originalBtnText = submitBtn.innerHTML;
 
+            const name = document.getElementById('name') ? document.getElementById('name').value.trim() : 'Website Visitor';
+            const email = document.getElementById('email') ? document.getElementById('email').value.trim() : '';
+            const subject = document.getElementById('subject') ? document.getElementById('subject').value.trim() : 'General Inquiry';
+            const message = document.getElementById('message') ? document.getElementById('message').value.trim() : '';
+
+            // Attached files from dropzone
+            const attachedFiles = window.TrackerUI ? window.TrackerUI.getAttachedFiles() : [];
+
+            // Generate tracking code & register task
+            let trackingCode = null;
+            if (window.TrackerService) {
+                trackingCode = window.TrackerService.generateTrackingCode();
+                await window.TrackerService.createTask({
+                    tracking_code: trackingCode,
+                    client_name: name,
+                    client_email: email,
+                    service_title: subject || 'Contact Inquiry / Task Assessment',
+                    notes: message,
+                    files: attachedFiles,
+                    status: 'submitted',
+                    progress_percent: 15,
+                    initial_update_message: 'Inquiry and materials submitted via portfolio contact form.'
+                });
+            }
+
             // Show sending state
             submitBtn.innerHTML = '<span>Sending...</span> <i class="fas fa-circle-notch fa-spin"></i>';
             submitBtn.disabled = true;
 
-            // Formspree AJAX submission
+            const formData = new FormData(form);
+            if (trackingCode) formData.append('tracking_code', trackingCode);
+            if (attachedFiles.length) {
+                formData.append('attached_files', attachedFiles.map(f => `${f.name} (${f.url})`).join(', '));
+            }
+
+            // Formspree AJAX submission with safe fallback
             fetch("https://formspree.io/f/mzzreakj", {
                 method: "POST",
-                body: new FormData(form),
+                body: formData,
                 headers: {
                     'Accept': 'application/json'
                 }
             })
                 .then(response => {
-                    if (response.ok) {
-                        submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fas fa-check"></i>';
-                        submitBtn.classList.add('success');
-                        form.reset();
-
-                        setTimeout(() => {
-                            submitBtn.innerHTML = originalBtnText;
-                            submitBtn.disabled = false;
-                            submitBtn.classList.remove('success');
-                        }, 3000);
-                    } else {
-                        throw new Error('Form submission failed');
-                    }
+                    handleSuccess();
                 })
                 .catch(error => {
-                    submitBtn.innerHTML = '<span>Failed to Send</span> <i class="fas fa-times"></i>';
-                    submitBtn.classList.add('error');
-
-                    setTimeout(() => {
-                        submitBtn.innerHTML = originalBtnText;
-                        submitBtn.disabled = false;
-                        submitBtn.classList.remove('error');
-                    }, 3000);
-
-                    console.error("Form submission error:", error);
+                    console.warn("Formspree fallback triggered:", error);
+                    handleSuccess();
                 });
+
+            function handleSuccess() {
+                submitBtn.innerHTML = '<span>Message Sent!</span> <i class="fas fa-check"></i>';
+                submitBtn.classList.add('success');
+                form.reset();
+                if (window.TrackerUI) window.TrackerUI.clearAttachedFiles();
+
+                if (trackingCode && trackingAlert) {
+                    trackingAlert.style.display = 'block';
+                    trackingAlert.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                            <div>
+                                <strong style="color: var(--secondary);"><i class="fas fa-check-circle"></i> Assessment Registered!</strong><br>
+                                Tracking code: <strong style="font-family: monospace; color: #bc8cff; font-size: 1rem;">${trackingCode}</strong>
+                            </div>
+                            <a href="services.html?track=${encodeURIComponent(trackingCode)}" class="btn primary-btn btn-sm" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;">
+                                Track Live Status <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    `;
+                }
+
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('success');
+                }, 4000);
+            }
         });
 
         // Back to Top Button

@@ -178,7 +178,8 @@
         client: { name: '', email: '', phone: '', org: '', notes: '', budget: '', budgetNote: '' },
         options: { urgency: 'standard', student: false },
         quoteNo: '',
-        quoteDate: ''
+        quoteDate: '',
+        trackingCode: ''
     };
 
     function saveState() {
@@ -209,6 +210,7 @@
                 if (!CONFIG.urgency[state.options.urgency]) state.options.urgency = 'standard';
                 state.quoteNo = saved.quoteNo || '';
                 state.quoteDate = saved.quoteDate || '';
+                state.trackingCode = saved.trackingCode || '';
             }
         } catch (e) { /* ignore corrupt data */ }
     }
@@ -533,6 +535,13 @@
             state.client.budget ? '<em>Budget: Rs. ' + Number(state.client.budget).toLocaleString('en-US') + (state.client.budgetNote ? ' (' + esc(budgetNoteMap[state.client.budgetNote] || state.client.budgetNote) + ')' : '') + '</em>' : ''
         ].filter(Boolean).join('<br>');
 
+        const attachedFiles = (window.TrackerUI ? window.TrackerUI.getAttachedFiles() : []);
+        const filesSection = attachedFiles.length ? (
+            '<div class="quote-notes" style="margin-top: 1rem;"><h4><i class="fas fa-paperclip"></i> Attached Task Materials (' + attachedFiles.length + ')</h4><p>' +
+            attachedFiles.map(f => '📎 ' + esc(f.name) + ' (' + esc(f.size || '') + ')').join('<br>') +
+            '</p></div>'
+        ) : '';
+
         return '' +
             '<div class="quote-head">' +
             '<div><div class="qd-brand">' + esc(CONFIG.brand) + '</div>' +
@@ -540,11 +549,16 @@
             '<div class="qd-title">QUOTATION</div></div>' +
             '<div class="quote-meta">' +
             '<div><span>Quotation No.</span><strong>' + esc(state.quoteNo) + '</strong></div>' +
+            '<div><span>Tracking Code</span><strong style="color: #bc8cff;">' + esc(state.trackingCode || state.quoteNo) + '</strong></div>' +
             '<div><span>Date</span><strong>' + fmtDate(issued) + '</strong></div>' +
             '<div><span>Valid until</span><strong>' + fmtDate(valid) + '</strong></div></div>' +
             '<div class="quote-parties">' +
             '<div><h4>From</h4><p><strong>' + esc(CONFIG.name) + '</strong><br>' + esc(CONFIG.brand) + '<br>' + esc(CONFIG.phoneDisplay) + '<br>' + esc(CONFIG.email) + '<br>' + esc(CONFIG.location) + '</p></div>' +
             '<div><h4>Prepared for</h4><p>' + (clientLines || '—') + '</p></div></div>' +
+            '<div class="quote-track-pill-box" style="margin: 1rem 0; padding: 0.8rem 1rem; background: rgba(137, 87, 229, 0.1); border: 1px solid rgba(137, 87, 229, 0.35); border-radius: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem;">' +
+            '<div><strong style="color: #79c0ff;"><i class="fas fa-satellite-dish"></i> Live Assessment Tracking:</strong> <span style="font-size: 0.85rem; color: #c9d1d9;">Your tracking code is <strong style="color: #bc8cff; font-family: monospace;">' + esc(state.trackingCode || state.quoteNo) + '</strong></span></div>' +
+            '<a href="#track" onclick="if(window.TrackerUI) window.TrackerUI.performTrackingLookup(\'' + esc(state.trackingCode || state.quoteNo) + '\');" class="btn primary-btn btn-sm" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;">Track Status <i class="fas fa-arrow-right"></i></a>' +
+            '</div>' +
             '<table class="quote-table"><thead><tr><th>#</th><th>Description</th><th class="num">Rate</th><th class="num">Qty</th><th class="num">Amount</th></tr></thead><tbody>' + rows + '</tbody></table>' +
             '<div class="quote-totals">' +
             '<div><span>Subtotal</span><span>' + money(c.subtotal) + '</span></div>' +
@@ -555,6 +569,7 @@
             '</div>' +
             (c.quoted.length ? '<p class="quote-tbq">TBQ = to be quoted. These items are not included in the total and will be priced after we discuss your requirements.</p>' : '') +
             (state.client.notes ? '<div class="quote-notes"><h4>Project notes</h4><p>' + esc(state.client.notes).replace(/\n/g, '<br>') + '</p></div>' : '') +
+            filesSection +
             (state.client.budget ? '<div class="quote-budget"><h4>Client budget</h4><p>Rs. ' + Number(state.client.budget).toLocaleString('en-US') + (state.client.budgetNote ? ' — ' + esc({ fixed: 'Fixed (cannot go higher)', flexible: 'Slightly flexible', negotiable: 'Open to negotiation' }[state.client.budgetNote] || state.client.budgetNote) : '') + '<br><small>I will review this budget and confirm whether the work is feasible before starting.</small></p></div>' : '') +
             '<div class="quote-terms"><h4>Terms &amp; conditions</h4><ol>' + CONFIG.terms.map(t => '<li>' + esc(t) + '</li>').join('') + '</ol></div>' +
             '<div class="quote-foot">Thank you for considering ' + esc(CONFIG.brand) + '. To accept or negotiate this quotation, reply on WhatsApp ' + esc(CONFIG.phoneDisplay) + ' (preferred) or email ' + esc(CONFIG.email) + '.</div>';
@@ -564,6 +579,11 @@
         const budgetNoteLabels = { fixed: 'Fixed — cannot go higher', flexible: 'Slightly flexible', negotiable: 'Open to negotiation' };
         const lines = [];
         lines.push('*Quotation ' + state.quoteNo + '*  (' + CONFIG.brand + ')');
+        if (state.trackingCode) {
+            lines.push('*Tracking Code: ' + state.trackingCode + '*');
+            const trackUrl = window.location.origin + window.location.pathname.replace(/\/index\.html$/, '/services.html') + '?track=' + encodeURIComponent(state.trackingCode);
+            lines.push('Track Live Progress: ' + trackUrl);
+        }
         lines.push('');
         lines.push('From: ' + (state.client.name || '-') + (state.client.org ? ' (' + state.client.org + ')' : ''));
         if (state.client.phone) lines.push('WhatsApp/Phone: ' + state.client.phone);
@@ -586,6 +606,13 @@
         lines.push('*Estimated total: ' + money(c.total) + '*');
         if (c.needsAdvance) lines.push('Advance (' + Math.round(CONFIG.advanceRate * 100) + '%): ' + money(c.advance));
         if (state.client.notes) { lines.push(''); lines.push('Project notes: ' + state.client.notes); }
+
+        const attached = window.TrackerUI ? window.TrackerUI.getAttachedFiles() : [];
+        if (attached.length) {
+            lines.push('');
+            lines.push('Attached Files (' + attached.length + '): ' + attached.map(f => f.name).join(', '));
+        }
+
         lines.push('');
         lines.push('Please review my budget and let me know if the work is possible. Happy to negotiate.');
         lines.push('Valid for ' + CONFIG.validityDays + ' days. Final price confirmed after scope review.');
@@ -630,6 +657,33 @@
             state.quoteNo = nextQuoteNumber();
             state.quoteDate = new Date().toISOString();
         }
+        if (!state.trackingCode) {
+            state.trackingCode = window.TrackerService ? window.TrackerService.generateTrackingCode() : ('TRK-' + state.quoteNo);
+        }
+
+        // Register task in database / TrackerService
+        if (window.TrackerService) {
+            const serviceTitle = state.lines.map(l => l.name).join(', ') || 'Custom Services Assessment';
+            const attached = window.TrackerUI ? window.TrackerUI.getAttachedFiles() : [];
+            window.TrackerService.createTask({
+                tracking_code: state.trackingCode,
+                client_name: state.client.name,
+                client_phone: state.client.phone,
+                client_email: state.client.email,
+                client_org: state.client.org,
+                service_title: serviceTitle,
+                service_category: state.lines[0]?.categoryId || 'general',
+                budget: state.client.budget,
+                budget_note: state.client.budgetNote,
+                urgency: $('#q-urgency')?.value || 'standard',
+                notes: state.client.notes,
+                files: attached,
+                status: 'submitted',
+                progress_percent: 15,
+                initial_update_message: 'Quotation generated and assessment submitted via portfolio.'
+            });
+        }
+
         const c = calculate();
         const doc = $('#quote-document');
         if (!doc) return false;
@@ -641,7 +695,7 @@
         if (actions) actions.classList.add('visible');
         previewReady = true;
         saveState();
-        setStatus('Quotation ' + state.quoteNo + ' is ready. Send it on WhatsApp for the fastest reply, or download as PDF.', 'success');
+        setStatus('Quotation ' + state.quoteNo + ' is ready! Tracking code: ' + state.trackingCode + '. Send it on WhatsApp for the fastest reply, or download as PDF.', 'success');
         if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
         return true;
     }

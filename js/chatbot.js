@@ -132,6 +132,22 @@ function initChatbot() {
         const asksPrice = /(\bprice|\bpricing|\bcost|\brates?\b|\bcharge|\bfees?\b|how much|\brs\b|\blkr\b|\bbudget|\bcheap|\bafford)/.test(input);
         const asksQuote = /(quote|quotation|estimate|invoice|proposal)/.test(input);
         const asksServices = /(service|offer|help with|can you do|what do you do|do you (do|build|make|fix|teach))/.test(input);
+        const asksTracking = /(track|tracking|status|where is my|check my|progress|deliverable|trk-)/.test(input);
+        const asksFileUpload = /(upload|send file|send pdf|excel file|attach|attachment|document file)/.test(input);
+
+        // Real-time tracking questions
+        if (asksTracking) {
+            const codeMatch = message.toUpperCase().match(/TRK-[A-Z0-9-]+/);
+            if (codeMatch) {
+                return `You can track code **${codeMatch[0]}** directly on our Real-Time Tracker! Visit services.html?track=${codeMatch[0]} to see live status, milestones, and deliverables.`;
+            }
+            return "You can track your assessment or project in real-time on our Work Tracker!\n\nJust visit the Services page (services.html#track) and enter your tracking code (e.g. TRK-DEMO-2026) to see live milestone updates and download completed deliverables.";
+        }
+
+        // File upload questions
+        if (asksFileUpload) {
+            return "Yes, you can easily attach files! When requesting a quotation or contacting Imantha, you can upload PDFs, Excel files (.xlsx, .xls), Word docs (.docx), TXT, code, or ZIPs up to 25MB. Once uploaded, you'll be given a real-time tracking code to follow your work status.";
+        }
 
         // Quotation requests
         if (asksQuote) {
