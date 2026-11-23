@@ -175,7 +175,7 @@
     ------------------------------------------------------------ */
     const state = {
         lines: [],            // { key, id, name, categoryId, categoryTitle, price, unit, from, qty, custom }
-        client: { name: '', email: '', phone: '', org: '', notes: '' },
+        client: { name: '', email: '', phone: '', org: '', notes: '', budget: '', budgetNote: '' },
         options: { urgency: 'standard', student: false },
         quoteNo: '',
         quoteDate: ''
@@ -376,7 +376,7 @@
 
     function resetQuote() {
         state.lines = [];
-        state.client = { name: '', email: '', phone: '', org: '', notes: '' };
+        state.client = { name: '', email: '', phone: '', org: '', notes: '', budget: '', budgetNote: '' };
         state.options = { urgency: 'standard', student: false };
         state.quoteNo = '';
         state.quoteDate = '';
@@ -450,7 +450,7 @@
     }
 
     function syncInputsFromState() {
-        const map = { 'q-name': 'name', 'q-email': 'email', 'q-phone': 'phone', 'q-org': 'org', 'q-notes': 'notes' };
+        const map = { 'q-name': 'name', 'q-email': 'email', 'q-phone': 'phone', 'q-org': 'org', 'q-notes': 'notes', 'q-budget': 'budget', 'q-budget-note': 'budgetNote' };
         Object.keys(map).forEach(id => {
             const el = document.getElementById(id);
             if (el) el.value = state.client[map[id]] || '';
@@ -467,11 +467,14 @@
         state.client.phone = (document.getElementById('q-phone') || {}).value || '';
         state.client.org = (document.getElementById('q-org') || {}).value || '';
         state.client.notes = (document.getElementById('q-notes') || {}).value || '';
+        state.client.budget = (document.getElementById('q-budget') || {}).value || '';
+        state.client.budgetNote = (document.getElementById('q-budget-note') || {}).value || '';
         state.client.name = state.client.name.trim();
         state.client.email = state.client.email.trim();
         state.client.phone = state.client.phone.trim();
         state.client.org = state.client.org.trim();
         state.client.notes = state.client.notes.trim();
+        state.client.budget = state.client.budget.trim();
     }
 
     /* ------------------------------------------------------------
@@ -512,11 +515,13 @@
                 '<td class="num">' + unitPrice + '</td><td class="num">' + qty + '</td><td class="num">' + amount + '</td></tr>';
         }).join('');
 
+        const budgetNoteMap = { fixed: 'Fixed — cannot go higher', flexible: 'Slightly flexible', negotiable: 'Open to negotiation' };
         const clientLines = [
             state.client.name ? '<strong>' + esc(state.client.name) + '</strong>' : '',
             state.client.org ? esc(state.client.org) : '',
             state.client.email ? esc(state.client.email) : '',
-            state.client.phone ? esc(state.client.phone) : ''
+            state.client.phone ? esc(state.client.phone) : '',
+            state.client.budget ? '<em>Budget: Rs. ' + Number(state.client.budget).toLocaleString('en-US') + (state.client.budgetNote ? ' (' + esc(budgetNoteMap[state.client.budgetNote] || state.client.budgetNote) + ')' : '') + '</em>' : ''
         ].filter(Boolean).join('<br>');
 
         return '' +
@@ -541,19 +546,25 @@
             '</div>' +
             (c.quoted.length ? '<p class="quote-tbq">TBQ = to be quoted. These items are not included in the total and will be priced after we discuss your requirements.</p>' : '') +
             (state.client.notes ? '<div class="quote-notes"><h4>Project notes</h4><p>' + esc(state.client.notes).replace(/\n/g, '<br>') + '</p></div>' : '') +
+            (state.client.budget ? '<div class="quote-budget"><h4>Client budget</h4><p>Rs. ' + Number(state.client.budget).toLocaleString('en-US') + (state.client.budgetNote ? ' — ' + esc({ fixed: 'Fixed (cannot go higher)', flexible: 'Slightly flexible', negotiable: 'Open to negotiation' }[state.client.budgetNote] || state.client.budgetNote) : '') + '<br><small>I will review this budget and confirm whether the work is feasible before starting.</small></p></div>' : '') +
             '<div class="quote-terms"><h4>Terms &amp; conditions</h4><ol>' + CONFIG.terms.map(t => '<li>' + esc(t) + '</li>').join('') + '</ol></div>' +
-            '<div class="quote-foot">Thank you for considering ' + esc(CONFIG.brand) + '. To accept this quotation, reply on WhatsApp ' + esc(CONFIG.phoneDisplay) + ' or email ' + esc(CONFIG.email) + '.</div>';
+            '<div class="quote-foot">Thank you for considering ' + esc(CONFIG.brand) + '. To accept or negotiate this quotation, reply on WhatsApp ' + esc(CONFIG.phoneDisplay) + ' (preferred) or email ' + esc(CONFIG.email) + '.</div>';
     }
 
     function quoteAsText(c) {
+        const budgetNoteLabels = { fixed: 'Fixed — cannot go higher', flexible: 'Slightly flexible', negotiable: 'Open to negotiation' };
         const lines = [];
         lines.push('*Quotation ' + state.quoteNo + '*  (' + CONFIG.brand + ')');
         lines.push('');
-        lines.push('Client: ' + (state.client.name || '-') + (state.client.org ? ' (' + state.client.org + ')' : ''));
-        if (state.client.phone) lines.push('Phone: ' + state.client.phone);
+        lines.push('From: ' + (state.client.name || '-') + (state.client.org ? ' (' + state.client.org + ')' : ''));
+        if (state.client.phone) lines.push('WhatsApp/Phone: ' + state.client.phone);
         if (state.client.email) lines.push('Email: ' + state.client.email);
+        if (state.client.budget) {
+            const bnLabel = state.client.budgetNote ? ' (' + (budgetNoteLabels[state.client.budgetNote] || state.client.budgetNote) + ')' : '';
+            lines.push('*Budget: Rs. ' + Number(state.client.budget).toLocaleString('en-US') + bnLabel + '*');
+        }
         lines.push('');
-        lines.push('Items:');
+        lines.push('Services requested:');
         state.lines.forEach((line, i) => {
             const isQuoted = (line.unit === 'quote' || line.price == null);
             const q = line.unit === 'hour' ? line.qty + ' h' : (line.unit === 'month' ? line.qty + ' mo' : 'x' + line.qty);
@@ -565,8 +576,9 @@
         if (c.discount) lines.push('Student discount: - ' + money(c.discount));
         lines.push('*Estimated total: ' + money(c.total) + '*');
         if (c.needsAdvance) lines.push('Advance (' + Math.round(CONFIG.advanceRate * 100) + '%): ' + money(c.advance));
-        if (state.client.notes) { lines.push(''); lines.push('Notes: ' + state.client.notes); }
+        if (state.client.notes) { lines.push(''); lines.push('Project notes: ' + state.client.notes); }
         lines.push('');
+        lines.push('Please review my budget and let me know if the work is possible. Happy to negotiate.');
         lines.push('Valid for ' + CONFIG.validityDays + ' days. Final price confirmed after scope review.');
         return lines.join('\n');
     }
@@ -588,8 +600,14 @@
             return false;
         }
         if (!state.client.name) {
-            setStatus('Please enter the client name.', 'error');
+            setStatus('Please enter your name.', 'error');
             const el = document.getElementById('q-name');
+            if (el) el.focus();
+            return false;
+        }
+        if (!state.client.phone) {
+            setStatus('Please enter your WhatsApp / phone number so I can contact you.', 'error');
+            const el = document.getElementById('q-phone');
             if (el) el.focus();
             return false;
         }
@@ -614,7 +632,7 @@
         if (actions) actions.classList.add('visible');
         previewReady = true;
         saveState();
-        setStatus('Quotation ' + state.quoteNo + ' is ready. Download, print or send it below.', 'success');
+        setStatus('Quotation ' + state.quoteNo + ' is ready. Send it on WhatsApp for the fastest reply, or download as PDF.', 'success');
         if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
         return true;
     }
@@ -767,10 +785,13 @@
             });
         }
 
-        ['q-name', 'q-email', 'q-phone', 'q-org', 'q-notes'].forEach(id => {
+        ['q-name', 'q-email', 'q-phone', 'q-org', 'q-notes', 'q-budget'].forEach(id => {
             const el = document.getElementById(id);
             if (el) el.addEventListener('input', () => { readClientInputs(); invalidatePreview(); saveState(); });
         });
+
+        const budgetNote = document.getElementById('q-budget-note');
+        if (budgetNote) budgetNote.addEventListener('change', () => { readClientInputs(); invalidatePreview(); saveState(); });
 
         const urg = document.getElementById('q-urgency');
         if (urg) urg.addEventListener('change', () => {
