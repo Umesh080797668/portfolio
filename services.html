@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/services.css">
+    <link rel="stylesheet" href="css/tracker.css">
     <link rel="stylesheet" href="css/responsive.css">
 
     <!-- Fonts -->
@@ -121,6 +122,7 @@
                 <a href="index.html#projects" class="nav-link">Projects</a>
                 <a href="index.html#testimonials" class="nav-link">Testimonials</a>
                 <a href="#services" class="nav-link active">Services</a>
+                <a href="#track" class="nav-link"><i class="fas fa-satellite-dish"></i> Track Work</a>
                 <a href="#quotation" class="nav-link nav-quote-link">Get Quote <span
                         class="quote-count js-quote-count">0</span></a>
                 <a href="index.html#contact" class="nav-link">Contact</a>
@@ -141,6 +143,7 @@
             <a href="index.html#projects" class="mobile-nav-link">Projects</a>
             <a href="index.html#testimonials" class="mobile-nav-link">Testimonials</a>
             <a href="#services" class="mobile-nav-link">Services</a>
+            <a href="#track" class="mobile-nav-link"><i class="fas fa-satellite-dish"></i> Track Work</a>
             <a href="#quotation" class="mobile-nav-link">Get Quote <span class="quote-count js-quote-count">0</span></a>
             <a href="index.html#contact" class="mobile-nav-link">Contact</a>
         </div>
@@ -156,6 +159,7 @@
         <div class="hero-cta">
             <a href="#pricing" class="btn primary-btn"><i class="fas fa-tags"></i> View Pricing</a>
             <a href="#quotation" class="btn outline-btn"><i class="fas fa-file-invoice"></i> Build My Quotation</a>
+            <a href="#track" class="btn ghost-btn"><i class="fas fa-satellite-dish"></i> Track Work</a>
             <a href="https://wa.me/94704124816" class="btn wa-btn" target="_blank" rel="noopener noreferrer"><i
                     class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
@@ -366,6 +370,52 @@
                             <textarea id="q-notes" class="q-textarea" maxlength="800"
                                 placeholder="Briefly describe what you need, your deadline, and any references or links."></textarea>
                         </div>
+
+                        <!-- Assessment & Project Files Upload -->
+                        <div class="file-upload-card">
+                            <div class="file-upload-header">
+                                <h3><i class="fas fa-paperclip" style="color: var(--secondary);"></i> Assessment / Task
+                                    Files</h3>
+                                <span class="file-upload-badge">PDF, Excel, TXT, Word, Docs</span>
+                            </div>
+                            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.8rem;">
+                                Have an assignment brief, dataset, document, or code? Attach it here to get an accurate
+                                review &amp; tracking code.
+                            </p>
+                            <div class="file-dropzone" id="quote-dropzone" data-target-input="quote-file-input"
+                                data-target-list="uploaded-files-container">
+                                <i class="fas fa-cloud-arrow-up file-dropzone-icon"></i>
+                                <div class="file-dropzone-title">Click to upload or drag &amp; drop files</div>
+                                <div class="file-dropzone-hint">PDF, Excel (.xlsx, .xls), Word (.doc, .docx), TXT, Code,
+                                    ZIP (up to 25MB)</div>
+                                <input type="file" id="quote-file-input" class="file-hidden-input" multiple
+                                    accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.rtf,.zip,.rar,.png,.jpg,.jpeg">
+                            </div>
+                            <div id="uploaded-files-container" class="uploaded-files-list"></div>
+                        </div>
+
+                        <!-- Assessment & Project Files Upload -->
+                        <div class="file-upload-card">
+                            <div class="file-upload-header">
+                                <h3><i class="fas fa-paperclip" style="color: var(--secondary);"></i> Assessment / Task
+                                    Files</h3>
+                                <span class="file-upload-badge">PDF, Excel, TXT, Word, Docs</span>
+                            </div>
+                            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.8rem;">
+                                Have an assignment brief, dataset, document, or code? Attach it here to get an accurate
+                                review &amp; tracking code.
+                            </p>
+                            <div class="file-dropzone" id="quote-dropzone" data-target-input="quote-file-input"
+                                data-target-list="uploaded-files-container">
+                                <i class="fas fa-cloud-arrow-up file-dropzone-icon"></i>
+                                <div class="file-dropzone-title">Click to upload or drag &amp; drop files</div>
+                                <div class="file-dropzone-hint">PDF, Excel (.xlsx, .xls), Word (.doc, .docx), TXT, Code,
+                                    ZIP (up to 25MB)</div>
+                                <input type="file" id="quote-file-input" class="file-hidden-input" multiple
+                                    accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.rtf,.zip,.rar,.png,.jpg,.jpeg">
+                            </div>
+                            <div id="uploaded-files-container" class="uploaded-files-list"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -424,6 +474,40 @@
         </div>
     </section>
 
+    <!-- ── Real-Time Work Tracker Section ── -->
+    <section id="track" class="track-section">
+        <div class="track-container">
+            <div class="section-header appear-animation">
+                <h2 class="section-title">Real-Time <span class="highlight">Work Tracker</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Track your assessment review, milestones, and download deliverables in
+                    real-time. Enter your tracking code below.</p>
+            </div>
+
+            <div class="track-search-card">
+                <h3>Track Your Assessment / Order</h3>
+                <p>Enter the tracking code provided when you requested a quotation or contacted via WhatsApp.</p>
+                <form id="track-form" class="track-form">
+                    <div class="track-input-wrapper">
+                        <i class="fas fa-barcode"></i>
+                        <input type="text" id="track-code-input" class="track-input" placeholder="e.g. TRK-2026-X8M4P"
+                            autocomplete="off" required>
+                    </div>
+                    <button type="submit" id="btn-track-code" class="btn primary-btn track-btn">
+                        <span>Track Status</span> <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+                <div class="track-quick-tags">
+                    <span>Need a demo? Click to test:</span>
+                    <button type="button" class="track-demo-chip" data-code="TRK-DEMO-2026">TRK-DEMO-2026</button>
+                </div>
+            </div>
+
+            <!-- Live Result Container (Populated by js/tracker-ui.js) -->
+            <div id="track-result-wrapper" class="track-result-wrapper"></div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
@@ -439,11 +523,17 @@
                     <a href="#services" class="footer-link">Services</a>
                     <a href="#pricing" class="footer-link">Pricing</a>
                     <a href="#quotation" class="footer-link">Get Quote</a>
+                    <a href="#track" class="footer-link">Track Work</a>
                     <a href="index.html#contact" class="footer-link">Contact</a>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footer-bottom"
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
                 <p>&copy; 2026 Imantha Umesh. All rights reserved.</p>
+                <button type="button" id="btn-open-admin-tracker" class="admin-link-btn"
+                    title="Open Admin Work Tracker">
+                    <i class="fas fa-shield-halved"></i> Staff Work Tracker (Admin)
+                </button>
             </div>
         </div>
     </footer>
@@ -501,9 +591,216 @@
         </div>
     </div>
 
+    <!-- Admin Work Tracker Modal -->
+    <div id="admin-tracker-modal" class="admin-tracker-modal">
+        <div class="admin-modal-card">
+            <div class="admin-modal-header">
+                <h2><i class="fas fa-shield-halved" style="color: var(--primary);"></i> Work Tracker Admin Portal</h2>
+                <button type="button" id="admin-modal-close" class="admin-modal-close" aria-label="Close admin modal"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <div class="admin-modal-body">
+                <!-- PIN Verification View -->
+                <div id="admin-pin-view" class="admin-pin-view">
+                    <i class="fas fa-fingerprint lock-icon"></i>
+                    <h3>Admin Authentication</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.4rem;">Enter your 4-digit
+                        manager PIN to update tasks &amp; generate tracking codes for clients.</p>
+                    <input type="password" id="admin-pin-input" class="admin-pin-input" maxlength="8" placeholder="••••"
+                        autocomplete="off">
+                    <button type="button" id="admin-pin-submit" class="btn primary-btn" style="width: 100%;">Unlock
+                        Portal</button>
+                    <div id="admin-pin-error" class="admin-pin-error"></div>
+                </div>
+
+                <!-- Admin Dashboard View -->
+                <div id="admin-dashboard-view" style="display: none;">
+                    <div class="admin-toolbar">
+                        <div class="admin-stats-row">
+                            <div class="admin-stat-chip">Total Tasks: <strong id="stat-total-tasks">0</strong></div>
+                            <div class="admin-stat-chip">Active: <strong id="stat-active-tasks"
+                                    style="color: var(--secondary);">0</strong></div>
+                            <div class="admin-stat-chip">Delivered: <strong id="stat-completed-tasks"
+                                    style="color: var(--green);">0</strong></div>
+                        </div>
+                        <button type="button" id="btn-toggle-quick-add" class="btn primary-btn btn-sm">
+                            <i class="fas fa-plus"></i> Quick-Add WhatsApp / Offline Task
+                        </button>
+                    </div>
+
+                    <!-- Quick Add Form -->
+                    <div id="admin-quick-add-form" class="admin-quick-add-form">
+                        <h4 style="margin-bottom: 1rem; color: var(--text);"><i class="fab fa-whatsapp"
+                                style="color: var(--green);"></i> Issue Tracking Code for WhatsApp / Direct Client</h4>
+                        <form id="form-quick-add-task">
+                            <div class="q-row">
+                                <div class="q-field">
+                                    <label>Client Name *</label>
+                                    <input type="text" id="qa-name" class="q-input" required
+                                        placeholder="e.g. Kasun Silva">
+                                </div>
+                                <div class="q-field">
+                                    <label>WhatsApp / Phone *</label>
+                                    <input type="tel" id="qa-phone" class="q-input" required
+                                        placeholder="+94 7X XXX XXXX">
+                                </div>
+                            </div>
+                            <div class="q-row">
+                                <div class="q-field">
+                                    <label>Task / Service Title *</label>
+                                    <input type="text" id="qa-title" class="q-input" required
+                                        placeholder="e.g. Assignment Formatting &amp; Excel Analysis">
+                                </div>
+                                <div class="q-field">
+                                    <label>Agreed Budget (LKR)</label>
+                                    <input type="number" id="qa-budget" class="q-input" placeholder="e.g. 10000">
+                                </div>
+                            </div>
+                            <div class="q-row">
+                                <div class="q-field">
+                                    <label>Initial Status</label>
+                                    <select id="qa-status" class="q-select">
+                                        <option value="submitted">1. Request Received</option>
+                                        <option value="reviewing">2. Assessment &amp; Scope Review</option>
+                                        <option value="in_progress" selected>3. In Progress / Working</option>
+                                        <option value="quality_polish">4. Review &amp; Quality Polish</option>
+                                        <option value="completed">5. Ready &amp; Delivered</option>
+                                    </select>
+                                </div>
+                                <div class="q-field">
+                                    <label>Starting Progress (%)</label>
+                                    <input type="number" id="qa-progress" class="q-input" min="0" max="100" value="20">
+                                </div>
+                            </div>
+                            <div class="q-field">
+                                <label>Task Notes &amp; Guidelines</label>
+                                <textarea id="qa-notes" class="q-textarea"
+                                    placeholder="Client instructions, references, or specific requirements..."></textarea>
+                            </div>
+                            <div style="display: flex; justify-content: flex-end; gap: 0.6rem; margin-top: 1rem;">
+                                <button type="submit" class="btn wa-btn">
+                                    <i class="fas fa-barcode"></i> Generate Code &amp; Prepare WhatsApp Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Tasks List -->
+                    <div id="admin-tasks-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Work Tracker Modal -->
+    <div id="admin-tracker-modal" class="admin-tracker-modal">
+        <div class="admin-modal-card">
+            <div class="admin-modal-header">
+                <h2><i class="fas fa-shield-halved" style="color: var(--primary);"></i> Work Tracker Admin Portal</h2>
+                <button type="button" id="admin-modal-close" class="admin-modal-close" aria-label="Close admin modal"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <div class="admin-modal-body">
+                <!-- PIN Verification View -->
+                <div id="admin-pin-view" class="admin-pin-view">
+                    <i class="fas fa-fingerprint lock-icon"></i>
+                    <h3>Admin Authentication</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.4rem;">Enter your 4-digit
+                        manager PIN to update tasks &amp; generate tracking codes for clients.</p>
+                    <input type="password" id="admin-pin-input" class="admin-pin-input" maxlength="8" placeholder="••••"
+                        autocomplete="off">
+                    <button type="button" id="admin-pin-submit" class="btn primary-btn" style="width: 100%;">Unlock
+                        Portal</button>
+                    <div id="admin-pin-error" class="admin-pin-error"></div>
+                </div>
+
+                <!-- Admin Dashboard View -->
+                <div id="admin-dashboard-view" style="display: none;">
+                    <div class="admin-toolbar">
+                        <div class="admin-stats-row">
+                            <div class="admin-stat-chip">Total Tasks: <strong id="stat-total-tasks">0</strong></div>
+                            <div class="admin-stat-chip">Active: <strong id="stat-active-tasks"
+                                    style="color: var(--secondary);">0</strong></div>
+                            <div class="admin-stat-chip">Delivered: <strong id="stat-completed-tasks"
+                                    style="color: var(--green);">0</strong></div>
+                        </div>
+                        <button type="button" id="btn-toggle-quick-add" class="btn primary-btn btn-sm">
+                            <i class="fas fa-plus"></i> Quick-Add WhatsApp / Offline Task
+                        </button>
+                    </div>
+
+                    <!-- Quick Add Form -->
+                    <div id="admin-quick-add-form" class="admin-quick-add-form">
+                        <h4 style="margin-bottom: 1rem; color: var(--text);"><i class="fab fa-whatsapp"
+                                style="color: var(--green);"></i> Issue Tracking Code for WhatsApp / Direct Client</h4>
+                        <form id="form-quick-add-task">
+                            <div class="q-row">
+                                <div class="q-field">
+                                    <label>Client Name *</label>
+                                    <input type="text" id="qa-name" class="q-input" required
+                                        placeholder="e.g. Kasun Silva">
+                                </div>
+                                <div class="q-field">
+                                    <label>WhatsApp / Phone *</label>
+                                    <input type="tel" id="qa-phone" class="q-input" required
+                                        placeholder="+94 7X XXX XXXX">
+                                </div>
+                            </div>
+                            <div class="q-row">
+                                <div class="q-field">
+                                    <label>Task / Service Title *</label>
+                                    <input type="text" id="qa-title" class="q-input" required
+                                        placeholder="e.g. Assignment Formatting &amp; Excel Analysis">
+                                </div>
+                                <div class="q-field">
+                                    <label>Agreed Budget (LKR)</label>
+                                    <input type="number" id="qa-budget" class="q-input" placeholder="e.g. 10000">
+                                </div>
+                            </div>
+                            <div class="q-row">
+                                <div class="q-field">
+                                    <label>Initial Status</label>
+                                    <select id="qa-status" class="q-select">
+                                        <option value="submitted">1. Request Received</option>
+                                        <option value="reviewing">2. Assessment &amp; Scope Review</option>
+                                        <option value="in_progress" selected>3. In Progress / Working</option>
+                                        <option value="quality_polish">4. Review &amp; Quality Polish</option>
+                                        <option value="completed">5. Ready &amp; Delivered</option>
+                                    </select>
+                                </div>
+                                <div class="q-field">
+                                    <label>Starting Progress (%)</label>
+                                    <input type="number" id="qa-progress" class="q-input" min="0" max="100" value="20">
+                                </div>
+                            </div>
+                            <div class="q-field">
+                                <label>Task Notes &amp; Guidelines</label>
+                                <textarea id="qa-notes" class="q-textarea"
+                                    placeholder="Client instructions, references, or specific requirements..."></textarea>
+                            </div>
+                            <div style="display: flex; justify-content: flex-end; gap: 0.6rem; margin-top: 1rem;">
+                                <button type="submit" class="btn wa-btn">
+                                    <i class="fas fa-barcode"></i> Generate Code &amp; Prepare WhatsApp Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Tasks List -->
+                    <div id="admin-tasks-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts (no Three.js / particles needed on this page) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <!-- Supabase Realtime Database SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/tracker-config.js"></script>
+    <script src="js/tracker-service.js"></script>
+    <script src="js/tracker-ui.js"></script>
     <script src="js/main.js"></script>
     <script src="js/services.js"></script>
     <script src="js/chatbot.js"></script>
