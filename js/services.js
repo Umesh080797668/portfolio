@@ -252,7 +252,7 @@
         const grid = $('#service-overview');
         if (!grid) return;
         grid.innerHTML = SERVICE_CATEGORIES.map(cat =>
-            '<button type="button" class="service-card svc-reveal" data-cat="' + cat.id + '">' +
+            '<button type="button" class="service-card svc-reveal in" data-cat="' + cat.id + '">' +
             '<div class="service-card-icon"><i class="fas ' + cat.icon + '"></i></div>' +
             '<h3>' + esc(cat.title) + '</h3>' +
             '<p>' + esc(cat.tagline) + '</p>' +
@@ -845,7 +845,7 @@
                     io.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.12 });
+        }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
         items.forEach(el => io.observe(el));
     }
 
@@ -855,14 +855,15 @@
     function init() {
         loadState();
         updateBadge();
+        if ($('#services')) {
+            renderServiceOverview();
+            renderTabs();
+            renderPanel();
+            syncInputsFromState();
+            refreshQuote();
+            bindEvents();
+        }
         initReveal();
-        if (!$('#services')) return;
-        renderServiceOverview();
-        renderTabs();
-        renderPanel();
-        syncInputsFromState();
-        refreshQuote();
-        bindEvents();
     }
 
     // Public hook so other scripts (e.g. the chatbot) can read the price list
