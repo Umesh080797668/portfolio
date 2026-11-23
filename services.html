@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Quotation | Imantha Umesh – TechAssist LK</title>
+    <meta name="description" content="Browse Imantha Umesh's services — web & mobile development, IT support, academic help and digital services. Build an instant quotation and send it on WhatsApp.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/services.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ── Page-specific overrides ── */
+
+        /* Hero banner at the top of the services page */
+        .svc-page-hero {
+            background: var(--darker-bg);
+            padding: 7rem 1.5rem 3.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .svc-page-hero .breadcrumb {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .svc-page-hero .breadcrumb a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .svc-page-hero .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .svc-page-hero h1 {
+            font-family: var(--font-main);
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .svc-page-hero h1 .highlight {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .svc-page-hero p {
+            max-width: 620px;
+            margin: 0 auto 1.75rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .svc-page-hero .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            justify-content: center;
+        }
+
+        /* Smooth scroll anchor offset (sticky nav height) */
+        html {
+            scroll-padding-top: 80px;
+        }
+
+        /* Section spacing tightened slightly (page is dedicated) */
+        .services-section,
+        .pricing-section,
+        .quotation-section {
+            padding: 4rem 0;
+        }
+    </style>
+</head>
+
+<body class="loading">
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <h2 class="glitch-text">TECHASSIST LK</h2>
+            <div class="loader-bar"></div>
+            <p class="loading-text">Loading Services<span class="dots">...</span></p>
+        </div>
+    </div>
+
+    <!-- Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">IU</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#skills" class="nav-link">Skills</a>
+                <a href="index.html#projects" class="nav-link">Projects</a>
+                <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+                <a href="#services" class="nav-link active">Services</a>
+                <a href="#quotation" class="nav-link nav-quote-link">Get Quote <span class="quote-count js-quote-count">0</span></a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <a href="index.html#about" class="mobile-nav-link">About</a>
+            <a href="index.html#skills" class="mobile-nav-link">Skills</a>
+            <a href="index.html#projects" class="mobile-nav-link">Projects</a>
+            <a href="index.html#testimonials" class="mobile-nav-link">Testimonials</a>
+            <a href="#services" class="mobile-nav-link">Services</a>
+            <a href="#quotation" class="mobile-nav-link">Get Quote <span class="quote-count js-quote-count">0</span></a>
+            <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+        </div>
+    </div>
+
+    <!-- Page Hero Banner -->
+    <div class="svc-page-hero">
+        <p class="breadcrumb"><a href="index.html"><i class="fas fa-house"></i> Home</a> &rsaquo; Services &amp; Quotation</p>
+        <h1>My <span class="highlight">Services</span> &amp; Pricing</h1>
+        <p>Browse what I offer, pick the services you need, and build a free instant quotation right here — no sign-up needed. Send it to me on <strong>WhatsApp</strong> for a quick reply and negotiation.</p>
+        <div class="hero-cta">
+            <a href="#pricing" class="btn primary-btn"><i class="fas fa-tags"></i> View Pricing</a>
+            <a href="#quotation" class="btn outline-btn"><i class="fas fa-file-invoice"></i> Build My Quotation</a>
+            <a href="https://wa.me/94704124816" class="btn wa-btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- ── Services Section ── -->
+    <section id="services" class="services-section">
+        <div class="services-container">
+            <div class="section-header appear-animation">
+                <h2 class="section-title">What I <span class="highlight">Offer</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Need help with tech, development, academic support, or digital services? Browse what I offer below, then build a free instant quotation — no sign-up needed.</p>
+            </div>
+
+            <div id="service-overview" class="service-overview"></div>
+
+            <div class="why-strip">
+                <div class="why-item svc-reveal"><i class="fas fa-tags"></i><div><strong>Affordable Prices</strong><span>Fair Sri Lankan market rates</span></div></div>
+                <div class="why-item svc-reveal"><i class="fas fa-clock"></i><div><strong>On-Time Delivery</strong><span>Clear timelines, no surprises</span></div></div>
+                <div class="why-item svc-reveal"><i class="fas fa-screwdriver-wrench"></i><div><strong>Tailored Solutions</strong><span>Built around your needs</span></div></div>
+                <div class="why-item svc-reveal"><i class="fas fa-headset"></i><div><strong>Long-Term Support</strong><span>Friendly help after delivery</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Pricing Section ── -->
+    <section id="pricing" class="pricing-section">
+        <div class="pricing-container">
+            <div class="section-header appear-animation">
+                <h2 class="section-title">Transparent <span class="highlight">Pricing</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Starting prices in Sri Lankan Rupees (LKR). Tap the + button on any service to add it to your quotation.</p>
+            </div>
+
+            <div id="service-tabs" class="service-tabs" role="tablist" aria-label="Service categories"></div>
+            <div id="service-panel" class="service-panel" role="tabpanel"></div>
+
+            <div class="pricing-note">
+                <i class="fas fa-circle-info"></i>
+                <p>The final price depends on scope, complexity and time required. Domain, hosting, paid software licences, travel and third-party costs are charged separately where applicable. Only genuine licensed software is used. Need something not listed? Add it as a custom item or just ask.</p>
+            </div>
+
+            <div class="pricing-cta">
+                <a href="#quotation" class="btn primary-btn">Build My Quotation <i class="fas fa-file-invoice"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Quotation Section ── -->
+    <section id="quotation" class="quotation-section">
+        <div class="quotation-container">
+            <div class="section-header appear-animation">
+                <h2 class="section-title">Get a <span class="highlight">Quotation</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Pick the services you need, fill in your details and your budget, then send me the quotation on WhatsApp — I'll review your budget and confirm whether the work fits. <strong>WhatsApp is recommended</strong> for a quick reply.</p>
+            </div>
+
+            <div class="quote-steps">
+                <div class="quote-step"><strong>Pick services</strong>Use the + buttons above</div>
+                <div class="quote-step"><strong>Adjust</strong>Set hours or quantity</div>
+                <div class="quote-step"><strong>Your details</strong>Name, contact &amp; budget</div>
+                <div class="quote-step"><strong>Send on WhatsApp</strong>Get a quick reply</div>
+            </div>
+
+            <div class="quote-grid">
+                <div class="quote-col">
+                    <div class="quote-card">
+                        <h3><i class="fas fa-list-check"></i> Your services</h3>
+                        <div id="quote-empty" class="quote-empty">
+                            No services added yet. Browse the <a href="#pricing">price list</a> and tap the + button, or add a custom item below.
+                        </div>
+                        <div id="quote-lines"></div>
+
+                        <form id="custom-item-form" class="custom-item-form" autocomplete="off">
+                            <input type="text" id="c-name" class="q-input" placeholder="Custom item, e.g. Inventory system for my shop" maxlength="120" aria-label="Custom item description">
+                            <input type="number" id="c-price" class="q-input" placeholder="Price (Rs.)" min="0" step="100" aria-label="Custom item price (leave empty if unknown)">
+                            <select id="c-unit" class="q-select" aria-label="Custom item price unit">
+                                <option value="fixed">per job</option>
+                                <option value="hour">per hour</option>
+                                <option value="month">per month</option>
+                            </select>
+                            <button type="submit" class="btn outline-btn btn-sm">Add <i class="fas fa-plus"></i></button>
+                        </form>
+                    </div>
+
+                    <div class="quote-card">
+                        <h3><i class="fas fa-user"></i> Your details</h3>
+                        <div class="q-row">
+                            <div class="q-field">
+                                <label for="q-name">Your name *</label>
+                                <input type="text" id="q-name" class="q-input" autocomplete="name" maxlength="80">
+                            </div>
+                            <div class="q-field">
+                                <label for="q-org">School / company (optional)</label>
+                                <input type="text" id="q-org" class="q-input" autocomplete="organization" maxlength="80">
+                            </div>
+                        </div>
+                        <div class="q-row">
+                            <div class="q-field">
+                                <label for="q-email">Your email</label>
+                                <input type="email" id="q-email" class="q-input" autocomplete="email" maxlength="100">
+                            </div>
+                            <div class="q-field">
+                                <label for="q-phone">WhatsApp / phone *</label>
+                                <input type="tel" id="q-phone" class="q-input" autocomplete="tel" maxlength="30" placeholder="+94 7XX XXX XXX">
+                            </div>
+                        </div>
+                        <div class="q-row">
+                            <div class="q-field">
+                                <label for="q-budget">Your budget (Rs.) — helps me check if I can help</label>
+                                <input type="number" id="q-budget" class="q-input" min="0" step="500" placeholder="e.g. 15000">
+                            </div>
+                            <div class="q-field">
+                                <label for="q-budget-note">Budget flexibility</label>
+                                <select id="q-budget-note" class="q-select">
+                                    <option value="">— select —</option>
+                                    <option value="fixed">Fixed — cannot go higher</option>
+                                    <option value="flexible">Slightly flexible</option>
+                                    <option value="negotiable">Open to negotiation</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="q-field">
+                            <label for="q-notes">Project notes (optional)</label>
+                            <textarea id="q-notes" class="q-textarea" maxlength="800" placeholder="Briefly describe what you need, your deadline, and any references or links."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-col">
+                    <div class="quote-card">
+                        <h3><i class="fas fa-sliders"></i> Options</h3>
+                        <div class="q-field">
+                            <label for="q-urgency">Delivery speed</label>
+                            <select id="q-urgency" class="q-select">
+                                <option value="standard">Standard delivery</option>
+                                <option value="priority">Priority (within 48 hours) +25%</option>
+                                <option value="express">Express (within 24 hours) +50%</option>
+                            </select>
+                        </div>
+                        <label class="q-check">
+                            <input type="checkbox" id="q-student">
+                            <span>I'm a school or university student (10% off academic and document services)</span>
+                        </label>
+                    </div>
+
+                    <div class="quote-card">
+                        <h3><i class="fas fa-calculator"></i> Summary</h3>
+                        <div class="quote-summary-rows">
+                            <div><span>Subtotal</span><span id="sum-subtotal">Rs. 0</span></div>
+                            <div><span id="sum-surcharge-label">Urgency surcharge</span><span id="sum-surcharge">Rs. 0</span></div>
+                            <div><span>Student discount</span><span id="sum-discount">Rs. 0</span></div>
+                            <div class="sum-total"><span>Estimated total</span><span id="sum-total">Rs. 0</span></div>
+                        </div>
+                        <p id="sum-advance" class="sum-note"></p>
+                        <p id="sum-tbq" class="sum-note warn" style="display:none"></p>
+
+                        <div class="quote-btn-row">
+                            <button type="button" id="btn-generate" class="btn primary-btn">Generate Quotation <i class="fas fa-file-invoice"></i></button>
+                            <button type="button" id="btn-reset" class="btn ghost-btn btn-sm">Clear</button>
+                        </div>
+                        <div id="quote-status" class="quote-status" role="status" aria-live="polite"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="quote-preview" class="quote-preview">
+                <div id="quote-actions" class="quote-actions">
+                    <button type="button" id="btn-whatsapp" class="btn wa-btn">Send on WhatsApp <i class="fab fa-whatsapp"></i> <span class="btn-badge">Recommended</span></button>
+                    <button type="button" id="btn-print" class="btn outline-btn btn-sm">Download / Print PDF <i class="fas fa-file-pdf"></i></button>
+                    <button type="button" id="btn-email" class="btn ghost-btn btn-sm">Send by Email <i class="fas fa-envelope"></i></button>
+                    <button type="button" id="btn-copy" class="btn ghost-btn btn-sm">Copy Text <i class="fas fa-copy"></i></button>
+                </div>
+                <div id="quote-document" class="quote-document"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <a href="index.html">IU</a>
+                </div>
+                <div class="footer-nav">
+                    <a href="index.html#about" class="footer-link">About</a>
+                    <a href="index.html#skills" class="footer-link">Skills</a>
+                    <a href="index.html#projects" class="footer-link">Projects</a>
+                    <a href="index.html#testimonials" class="footer-link">Testimonials</a>
+                    <a href="#services" class="footer-link">Services</a>
+                    <a href="#pricing" class="footer-link">Pricing</a>
+                    <a href="#quotation" class="footer-link">Get Quote</a>
+                    <a href="index.html#contact" class="footer-link">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Imantha Umesh. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top" class="back-to-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- WhatsApp Contact Button -->
+    <a href="https://wa.me/94704124816" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" title="Contact me on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span>Chat with me</span>
+    </a>
+
+    <!-- AI Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle">
+            <span class="toggle-icon"><i class="fas fa-robot"></i></span>
+            <span class="toggle-close"><i class="fas fa-times"></i></span>
+        </div>
+
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-title">
+                    <div class="bot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="bot-info">
+                        <h3>Portfolio AI</h3>
+                        <p>Typically replies instantly</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chatbot-messages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        Hi there! I'm Imantha's personal AI assistant. Looking for pricing, service details, or help with a quotation?
+                    </div>
+                </div>
+            </div>
+
+            <div class="chatbot-input">
+                <form id="chatbot-form">
+                    <input type="text" id="user-input" placeholder="Ask about services, pricing, or custom projects..." autocomplete="off">
+                    <button type="submit" class="send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts (no Three.js / particles needed on this page) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/chatbot.js"></script>
+
+    <script>
+        // Back to Top Button
+        (function () {
+            const btn = document.getElementById('back-to-top');
+            if (!btn) return;
+            window.addEventListener('scroll', function () {
+                btn.classList.toggle('active', window.pageYOffset > 300);
+            });
+            btn.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+
+        // Auto-scroll to #quotation if URL hash is #quotation on load
+        (function () {
+            if (window.location.hash === '#quotation') {
+                window.addEventListener('load', function () {
+                    const el = document.getElementById('quotation');
+                    if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 400);
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>
+

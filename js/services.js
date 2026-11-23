@@ -407,7 +407,16 @@
             '</div>';
     }
 
+    function updateBadge() {
+        $$('.js-quote-count').forEach(el => {
+            const count = state.lines.length;
+            el.textContent = count;
+            el.classList.toggle('has-items', count > 0);
+        });
+    }
+
     function refreshQuote() {
+        updateBadge();
         const list = $('#quote-lines');
         const empty = $('#quote-empty');
         if (!list) return;
@@ -844,15 +853,16 @@
        Init
     ------------------------------------------------------------ */
     function init() {
-        if (!$('#services')) return;
         loadState();
+        updateBadge();
+        initReveal();
+        if (!$('#services')) return;
         renderServiceOverview();
         renderTabs();
         renderPanel();
         syncInputsFromState();
         refreshQuote();
         bindEvents();
-        initReveal();
     }
 
     // Public hook so other scripts (e.g. the chatbot) can read the price list
