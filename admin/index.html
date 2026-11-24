@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="referrer" content="no-referrer">
+    <title>Admin | Work Tracking</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <main id="app">
+        <!-- Sign in -->
+        <section id="view-login" class="center-card" hidden>
+            <form id="login-form" class="card" autocomplete="on">
+                <h1>Admin sign in</h1>
+                <p class="muted">Authorised administrators only. All activity is logged.</p>
+                <label for="login-email">E-mail</label>
+                <input id="login-email" type="email" autocomplete="username" required>
+                <label for="login-password">Password</label>
+                <input id="login-password" type="password" autocomplete="current-password" required>
+                <button type="submit" class="btn primary" id="login-submit">Sign in</button>
+                <p id="login-msg" class="msg" role="alert"></p>
+            </form>
+        </section>
+
+        <!-- Two-factor -->
+        <section id="view-mfa" class="center-card" hidden>
+            <form id="mfa-form" class="card" autocomplete="off">
+                <h1 id="mfa-title">Two-factor authentication</h1>
+                <div id="mfa-enroll" hidden>
+                    <p class="muted">Scan this QR code with an authenticator app (Google Authenticator, Microsoft Authenticator, Authy, 1Password...), then enter the 6-digit code.</p>
+                    <img id="mfa-qr" alt="Authenticator QR code" width="180" height="180">
+                    <p class="muted small">Cannot scan? Enter this key manually:</p>
+                    <code id="mfa-secret" class="secret"></code>
+                </div>
+                <p id="mfa-challenge-text" class="muted" hidden>Enter the 6-digit code from your authenticator app.</p>
+                <label for="mfa-code">6-digit code</label>
+                <input id="mfa-code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" required>
+                <button type="submit" class="btn primary" id="mfa-submit">Verify</button>
+                <button type="button" class="btn ghost" id="mfa-cancel">Sign out</button>
+                <p id="mfa-msg" class="msg" role="alert"></p>
+            </form>
+        </section>
+
+        <!-- Not allowed -->
+        <section id="view-denied" class="center-card" hidden>
+            <div class="card">
+                <h1>Access denied</h1>
+                <p class="muted">This account is not authorised for the admin dashboard.</p>
+                <button type="button" class="btn ghost" id="denied-signout">Sign out</button>
+            </div>
+        </section>
+
+        <!-- Dashboard -->
+        <section id="view-dash" hidden>
+            <header class="topbar">
+                <strong>Work tracking</strong>
+                <span class="grow"></span>
+                <span id="who" class="muted small"></span>
+                <button type="button" class="btn ghost small" id="btn-audit">Audit log</button>
+                <button type="button" class="btn ghost small" id="btn-refresh">Refresh</button>
+                <button type="button" class="btn ghost small" id="btn-signout">Sign out</button>
+            </header>
+
+            <div class="layout">
+                <aside class="sidebar">
+                    <div class="filters">
+                        <button type="button" class="btn primary" id="btn-new">+ New order</button>
+                        <input id="search" type="search" placeholder="Search name, phone, code..." aria-label="Search orders">
+                        <select id="filter-status" aria-label="Filter by status"></select>
+                    </div>
+                    <ul id="order-list" class="order-list"></ul>
+                    <p id="list-empty" class="muted pad" hidden>No orders found.</p>
+                </aside>
+                <section id="detail" class="detail">
+                    <p class="muted pad">Select an order from the list, or create a new one.</p>
+                </section>
+            </div>
+            <div id="toast" class="toast" role="status"></div>
+        </section>
+
+        <!-- New order dialog -->
+        <dialog id="dlg-new">
+            <form id="new-form" method="dialog" class="card flat">
+                <h2>New order</h2>
+                <p class="muted small">For clients who contacted you on WhatsApp, by phone or e-mail.</p>
+                <div class="grid2">
+                    <div><label for="n-name">Client name *</label><input id="n-name" required minlength="2" maxlength="80"></div>
+                    <div><label for="n-org">School / company</label><input id="n-org" maxlength="80"></div>
+                    <div><label for="n-phone">WhatsApp / phone</label><input id="n-phone" maxlength="30"></div>
+                    <div><label for="n-email">E-mail</label><input id="n-email" type="email" maxlength="120"></div>
+                </div>
+                <label for="n-title">Work title *</label>
+                <input id="n-title" required minlength="3" maxlength="150">
+                <label for="n-details">Details</label>
+                <textarea id="n-details" maxlength="2000"></textarea>
+                <div class="grid2">
+                    <div><label for="n-source">Came from</label>
+                        <select id="n-source">
+                            <option value="whatsapp">WhatsApp</option>
+                            <option value="phone">Phone</option>
+                            <option value="email">E-mail</option>
+                            <option value="other">Other</option>
+                        </select></div>
+                    <div><label for="n-due">Expected by</label><input id="n-due" type="date"></div>
+                    <div><label for="n-quoteno">Quotation no.</label><input id="n-quoteno" maxlength="40"></div>
+                    <div><label for="n-quotetotal">Quoted total (Rs.)</label><input id="n-quotetotal" type="number" min="0" step="100"></div>
+                </div>
+                <label for="n-notes">Internal notes (never shown to the client)</label>
+                <textarea id="n-notes" maxlength="4000"></textarea>
+                <label class="check"><input type="checkbox" id="n-issue" checked> Issue a tracking code now</label>
+                <p id="new-msg" class="msg" role="alert"></p>
+                <div class="row end">
+                    <button type="button" class="btn ghost" id="new-cancel">Cancel</button>
+                    <button type="submit" class="btn primary" id="new-submit">Create</button>
+                </div>
+            </form>
+        </dialog>
+
+        <!-- Audit dialog -->
+        <dialog id="dlg-audit">
+            <div class="card flat">
+                <h2>Audit log</h2>
+                <div id="audit-body" class="audit"></div>
+                <div class="row end"><button type="button" class="btn ghost" id="audit-close">Close</button></div>
+            </div>
+        </dialog>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="vendor/supabase.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

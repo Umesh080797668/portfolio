@@ -3,22 +3,11 @@
   Uses the theme variables from style.css
 -------------------------------------*/
 
-/* Navigation: fit all links cleanly */
+/* Navigation: fit the two new links */
 @media (min-width: 993px) {
     .nav-links {
-        gap: 1.1rem;
+        gap: 1.4rem;
     }
-
-    .nav-link {
-        font-size: 0.82rem;
-    }
-}
-
-@media (min-width: 1200px) {
-    .nav-links {
-        gap: 1.35rem;
-    }
-
     .nav-link {
         font-size: 0.85rem;
     }
@@ -165,248 +154,6 @@
 
 .service-card:hover .service-card-link i {
     transform: translateX(4px);
-}
-
-/* Teaser grid on index.html */
-.services-teaser-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.service-teaser-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.75rem;
-    color: var(--text);
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.service-teaser-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--primary);
-    box-shadow: var(--shadow-primary);
-}
-
-.service-teaser-card h3 {
-    font-family: var(--font-main);
-    font-size: 1.15rem;
-}
-
-.service-teaser-card p {
-    color: var(--text-muted);
-    font-size: 0.92rem;
-    line-height: 1.5;
-}
-
-.service-teaser-card .service-card-link {
-    margin-top: auto;
-    padding-top: 0.5rem;
-    color: var(--secondary);
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-}
-
-.service-teaser-card:hover .service-card-link i {
-    transform: translateX(4px);
-}
-
-/* Services CTA Banner on index.html */
-.services-cta-banner {
-    background: linear-gradient(135deg, rgba(137, 87, 229, 0.15), rgba(0, 229, 255, 0.08));
-    border: 1px solid var(--primary);
-    border-radius: 16px;
-    padding: 2.2rem 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: 2.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.services-cta-banner .banner-badge {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    background: var(--gradient-1);
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-}
-
-.services-cta-banner h3 {
-    font-family: var(--font-main);
-    font-size: 1.35rem;
-    margin-bottom: 0.5rem;
-    color: var(--text);
-}
-
-.services-cta-banner p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    max-width: 650px;
-    line-height: 1.6;
-}
-
-.services-cta-banner .banner-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-    flex-shrink: 0;
-}
-
-@media (max-width: 900px) {
-    .services-cta-banner {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1.75rem;
-    }
-
-    .services-cta-banner .banner-buttons {
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 100%;
-    }
-
-    .services-cta-banner .banner-buttons .btn {
-        flex: 1 1 auto;
-        text-align: center;
-        justify-content: center;
-    }
-}
-
-/* Teaser grid on index.html */
-.services-teaser-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.service-teaser-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.75rem;
-    color: var(--text);
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.service-teaser-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--primary);
-    box-shadow: var(--shadow-primary);
-}
-
-.service-teaser-card h3 {
-    font-family: var(--font-main);
-    font-size: 1.15rem;
-}
-
-.service-teaser-card p {
-    color: var(--text-muted);
-    font-size: 0.92rem;
-    line-height: 1.5;
-}
-
-.service-teaser-card .service-card-link {
-    margin-top: auto;
-    padding-top: 0.5rem;
-    color: var(--secondary);
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-}
-
-.service-teaser-card:hover .service-card-link i {
-    transform: translateX(4px);
-}
-
-/* Services CTA Banner on index.html */
-.services-cta-banner {
-    background: linear-gradient(135deg, rgba(137, 87, 229, 0.15), rgba(0, 229, 255, 0.08));
-    border: 1px solid var(--primary);
-    border-radius: 16px;
-    padding: 2.2rem 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: 2.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.services-cta-banner .banner-badge {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    background: var(--gradient-1);
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-}
-
-.services-cta-banner h3 {
-    font-family: var(--font-main);
-    font-size: 1.35rem;
-    margin-bottom: 0.5rem;
-    color: var(--text);
-}
-
-.services-cta-banner p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    max-width: 650px;
-    line-height: 1.6;
-}
-
-.services-cta-banner .banner-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-    flex-shrink: 0;
-}
-
-@media (max-width: 900px) {
-    .services-cta-banner {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1.75rem;
-    }
-
-    .services-cta-banner .banner-buttons {
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 100%;
-    }
-
-    .services-cta-banner .banner-buttons .btn {
-        flex: 1 1 auto;
-        text-align: center;
-        justify-content: center;
-    }
 }
 
 .why-strip {
@@ -688,7 +435,7 @@
     box-shadow: var(--shadow-md);
 }
 
-.quote-card+.quote-card {
+.quote-card + .quote-card {
     margin-top: 1.5rem;
 }
 
@@ -881,7 +628,7 @@
 }
 
 /* Summary */
-.quote-summary-rows>div {
+.quote-summary-rows > div {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
@@ -956,28 +703,12 @@
 .wa-btn {
     background: #25D366;
     color: #fff;
-    position: relative;
 }
 
 .wa-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
     color: #fff;
-}
-
-/* "Recommended" badge on WhatsApp action button */
-.btn-badge {
-    display: inline-block;
-    margin-left: 0.45rem;
-    padding: 0.1rem 0.5rem;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.25);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    vertical-align: middle;
-    line-height: 1.6;
 }
 
 /* Quotation preview (looks like paper) */
@@ -996,13 +727,6 @@
     justify-content: center;
     gap: 0.75rem;
     margin-bottom: 1.25rem;
-}
-
-.quote-actions .wa-btn {
-    padding: 0.75rem 1.6rem;
-    font-size: 0.95rem;
-    font-weight: 700;
-    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
 }
 
 .quote-actions.visible {
@@ -1119,7 +843,7 @@
     max-width: 340px;
 }
 
-.quote-totals>div {
+.quote-totals > div {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
@@ -1148,26 +872,8 @@
 }
 
 .quote-notes,
-.quote-budget,
 .quote-terms {
     margin-top: 1.5rem;
-}
-
-/* Budget block in generated PDF */
-.quote-budget {
-    background: #fff8e1;
-    border-left: 3px solid #f9a825;
-    border-radius: 4px;
-    padding: 0.75rem 1rem;
-}
-
-.quote-budget h4 {
-    color: #b06000 !important;
-}
-
-.quote-budget p {
-    color: #5d4037 !important;
-    font-size: 0.88rem;
 }
 
 .quote-terms ol {
@@ -1236,76 +942,60 @@
 }
 
 @media (max-width: 640px) {
-
     .services-container,
     .pricing-container,
     .quotation-container {
         padding: 0 1rem;
     }
-
     .service-panel {
         padding: 1.25rem 1rem;
     }
-
     .price-row {
         grid-template-columns: 1fr 38px;
         gap: 0.5rem 0.75rem;
     }
-
     .price-tag {
         grid-column: 1;
         grid-row: 2;
         text-align: left;
     }
-
     .price-add {
         grid-column: 2;
         grid-row: 1 / span 2;
     }
-
     .quote-line {
         grid-template-columns: 1fr auto;
         row-gap: 0.5rem;
     }
-
     .line-main {
         grid-column: 1 / -1;
     }
-
     .line-amount {
         text-align: right;
     }
-
     .custom-item-form {
         grid-template-columns: 1fr 1fr;
     }
-
     .custom-item-form .q-input:first-child {
         grid-column: 1 / -1;
     }
-
     .custom-item-form .btn {
         grid-column: 1 / -1;
     }
-
     .q-row {
         grid-template-columns: 1fr;
     }
-
     .quote-document {
         padding: 1.25rem;
         overflow-x: auto;
     }
-
     .quote-head {
         flex-direction: column;
     }
-
     .quote-meta,
     .quote-parties {
         grid-template-columns: 1fr;
     }
-
     .quote-toast {
         bottom: 80px;
     }
@@ -1323,24 +1013,19 @@
         size: A4;
         margin: 14mm;
     }
-
     body.print-quote-mode {
         background: #fff !important;
     }
-
     body.print-quote-mode::before,
     body.print-quote-mode::after {
         display: none !important;
     }
-
-    body.print-quote-mode>*:not(#quote-print-root) {
+    body.print-quote-mode > *:not(#quote-print-root) {
         display: none !important;
     }
-
     body.print-quote-mode #quote-print-root {
         display: block !important;
     }
-
     body.print-quote-mode .quote-document {
         box-shadow: none;
         border-radius: 0;
@@ -1348,14 +1033,12 @@
         max-width: none;
         font-size: 11pt;
     }
-
     body.print-quote-mode .quote-table th,
     body.print-quote-mode .quote-totals .grand,
     body.print-quote-mode .quote-meta {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
-
     body.print-quote-mode .quote-table tr {
         break-inside: avoid;
     }

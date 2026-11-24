@@ -1,49 +1,10 @@
-# Environment variables (contains sensitive secrets, credentials, API keys)
+# Secrets and local config - NEVER commit
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-env.json
-js/env.js
+.env.*
+!.env.example
 
-# Dependency directories
+# Dependencies and generated files
 node_modules/
-jspm_packages/
-
-# Production build outputs
-dist/
-build/
-out/
-
-# Log files
+/config.js
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-*.log
-
-# Operating System files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# IDE and Editor configurations
-.idea/
-.vscode/
-*.swp
-*.swo
-*~
-*.sublime-project
-*.sublime-workspace
-
-# Temporary and cache folders
-.cache/
-.tmp/
-tmp/
-
