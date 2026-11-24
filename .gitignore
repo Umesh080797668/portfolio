@@ -2,6 +2,7 @@
 .env
 .env.*
 !.env.example
+js/env.js
 
 # Dependencies and generated files
 node_modules/
