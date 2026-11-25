@@ -1,0 +1,1085 @@
+/*-------------------------------------
+  Services, Pricing & Quotation
+  Uses the theme variables from style.css
+-------------------------------------*/
+
+/* Navigation: fit the two new links */
+@media (min-width: 993px) {
+    .nav-links {
+        gap: 1.4rem;
+    }
+    .nav-link {
+        font-size: 0.85rem;
+    }
+}
+
+.nav-quote-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.quote-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 10px;
+    background: var(--border);
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.quote-count.has-items {
+    background: var(--gradient-1);
+    color: #fff;
+    box-shadow: var(--shadow-primary);
+}
+
+.section-subtitle {
+    max-width: 640px;
+    margin: 0.5rem auto 0;
+    color: var(--text-muted);
+}
+
+/* Reveal on scroll (handled in js/services.js) */
+.svc-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.svc-reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*-------------------------------------
+  Services section
+-------------------------------------*/
+.services-section {
+    background: var(--darker-bg);
+}
+
+.services-container,
+.pricing-container,
+.quotation-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.service-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.5rem;
+}
+
+.service-card {
+    text-align: left;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    color: var(--text);
+    font-family: var(--font-body);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease;
+}
+
+.service-card:hover,
+.service-card:focus-visible {
+    transform: translateY(-6px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-primary);
+    outline: none;
+}
+
+.service-card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: var(--gradient-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.service-card h3 {
+    font-family: var(--font-main);
+    font-size: 1.15rem;
+}
+
+.service-card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+}
+
+.service-card ul {
+    list-style: none;
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.88rem;
+    margin-top: 0.25rem;
+}
+
+.service-card li i {
+    color: var(--green);
+    margin-right: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.service-card-link {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    color: var(--secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.service-card-link i {
+    margin-left: 0.35rem;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-card-link i {
+    transform: translateX(4px);
+}
+
+.why-strip {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.why-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: rgba(22, 27, 34, 0.6);
+}
+
+.why-item i {
+    font-size: 1.3rem;
+    color: var(--primary);
+}
+
+.why-item strong {
+    display: block;
+    font-size: 0.95rem;
+}
+
+.why-item span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/*-------------------------------------
+  Pricing section
+-------------------------------------*/
+.pricing-section {
+    background: var(--dark-bg);
+}
+
+.service-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.service-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: 30px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.92rem;
+    transition: all 0.3s ease;
+}
+
+.service-tab:hover {
+    color: var(--text);
+    border-color: var(--primary);
+}
+
+.service-tab.active {
+    background: var(--gradient-1);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: var(--shadow-primary);
+}
+
+.service-panel {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem;
+    box-shadow: var(--shadow-md);
+}
+
+.price-panel-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.price-icon {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--gradient-1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.price-panel-head h3 {
+    font-family: var(--font-main);
+    font-size: 1.25rem;
+}
+
+.price-panel-head p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.price-list {
+    list-style: none;
+}
+
+.price-row {
+    display: grid;
+    grid-template-columns: 1fr auto 40px;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.95rem 0;
+    border-bottom: 1px solid rgba(48, 54, 61, 0.6);
+}
+
+.price-row:last-child {
+    border-bottom: none;
+}
+
+.price-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+}
+
+.price-name {
+    font-weight: 600;
+}
+
+.price-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.price-tag {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.price-amount {
+    display: block;
+    font-family: var(--font-main);
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+.price-amount em {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.price-tag small {
+    display: block;
+    font-size: 0.74rem;
+    color: var(--text-muted);
+}
+
+.price-add {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.price-add:hover,
+.price-add:focus-visible {
+    background: var(--primary);
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: var(--shadow-primary);
+}
+
+.pricing-note {
+    max-width: 900px;
+    margin: 1.5rem auto 0;
+    display: flex;
+    gap: 0.85rem;
+    padding: 1rem 1.25rem;
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.pricing-note i {
+    color: var(--yellow);
+    margin-top: 0.2rem;
+}
+
+.pricing-cta {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/*-------------------------------------
+  Quotation builder
+-------------------------------------*/
+.quotation-section {
+    background: var(--darker-bg);
+}
+
+.quote-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+    counter-reset: qstep;
+}
+
+.quote-step {
+    position: relative;
+    padding: 1rem 1rem 1rem 3.2rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: rgba(22, 27, 34, 0.6);
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.quote-step::before {
+    counter-increment: qstep;
+    content: counter(qstep);
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gradient-1);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quote-step strong {
+    display: block;
+    color: var(--text);
+}
+
+.quote-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+.quote-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+}
+
+.quote-card + .quote-card {
+    margin-top: 1.5rem;
+}
+
+.quote-card h3 {
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.quote-card h3 i {
+    color: var(--primary);
+}
+
+.quote-empty {
+    text-align: center;
+    padding: 1.75rem 1rem;
+    color: var(--text-muted);
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+}
+
+.quote-empty a {
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+.quote-line {
+    display: grid;
+    grid-template-columns: 1fr auto auto 34px;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(48, 54, 61, 0.6);
+}
+
+.line-main {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.line-name {
+    font-weight: 600;
+    font-size: 0.93rem;
+}
+
+.line-unit {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.line-qty {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.qty-btn {
+    width: 30px;
+    height: 32px;
+    background: var(--dark-bg);
+    color: var(--text);
+    font-size: 0.7rem;
+}
+
+.qty-btn:hover {
+    background: var(--primary);
+}
+
+.qty-input {
+    width: 52px;
+    height: 32px;
+    text-align: center;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: var(--font-body);
+    -moz-appearance: textfield;
+}
+
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.line-amount {
+    min-width: 96px;
+    text-align: right;
+    font-weight: 700;
+    font-family: var(--font-main);
+}
+
+.line-amount.muted {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.line-remove {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-muted);
+}
+
+.line-remove:hover {
+    color: var(--accent);
+    background: rgba(249, 117, 131, 0.1);
+}
+
+/* Custom item + fields */
+.custom-item-form {
+    display: grid;
+    grid-template-columns: 1fr 130px 130px auto;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+}
+
+.q-input,
+.q-select,
+.q-textarea {
+    width: 100%;
+    background: var(--dark-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.7rem 0.85rem;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.q-input:focus,
+.q-select:focus,
+.q-textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(137, 87, 229, 0.2);
+}
+
+.q-textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.q-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 0.9rem;
+}
+
+.q-field label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.q-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+}
+
+.q-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.q-check input {
+    margin-top: 0.25rem;
+    accent-color: var(--primary);
+}
+
+.btn-sm {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.8rem;
+}
+
+/* Summary */
+.quote-summary-rows > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+}
+
+.quote-summary-rows .sum-total {
+    margin-top: 0.5rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+    color: var(--text);
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.sum-total span:last-child {
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: var(--font-main);
+}
+
+.sum-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+.sum-note.warn {
+    color: var(--yellow);
+}
+
+.quote-btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.quote-btn-row .btn {
+    flex: 1 1 auto;
+}
+
+.quote-status {
+    min-height: 1.3rem;
+    margin-top: 0.85rem;
+    font-size: 0.86rem;
+}
+
+.quote-status.error {
+    color: var(--accent);
+}
+
+.quote-status.success {
+    color: var(--green);
+}
+
+.ghost-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+
+.ghost-btn:hover {
+    color: var(--text);
+    border-color: var(--text-muted);
+}
+
+.wa-btn {
+    background: #25D366;
+    color: #fff;
+}
+
+.wa-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    color: #fff;
+}
+
+/* Quotation preview (looks like paper) */
+.quote-preview {
+    display: none;
+    margin-top: 2.5rem;
+}
+
+.quote-preview.visible {
+    display: block;
+}
+
+.quote-actions {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.quote-actions.visible {
+    display: flex;
+}
+
+.quote-document {
+    max-width: 820px;
+    margin: 0 auto;
+    background: #ffffff;
+    color: #1f2328;
+    padding: 2.5rem;
+    border-radius: 6px;
+    box-shadow: var(--shadow-lg);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.quote-document h4 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #6e7781;
+    margin-bottom: 0.4rem;
+}
+
+.quote-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 3px solid #8957e5;
+}
+
+.qd-brand {
+    font-family: var(--font-main);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0d1117;
+}
+
+.qd-sub {
+    font-size: 0.8rem;
+    color: #57606a;
+}
+
+.qd-title {
+    font-family: var(--font-main);
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: #8957e5;
+}
+
+.quote-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.25rem 0;
+    padding: 0.85rem 1rem;
+    background: #f6f8fa;
+    border-radius: 6px;
+}
+
+.quote-meta span {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6e7781;
+}
+
+.quote-parties {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.quote-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.quote-table th {
+    text-align: left;
+    background: #0d1117;
+    color: #fff;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 0.6rem 0.7rem;
+}
+
+.quote-table td {
+    padding: 0.7rem;
+    border-bottom: 1px solid #d0d7de;
+    vertical-align: top;
+}
+
+.quote-table small {
+    color: #6e7781;
+}
+
+.quote-table .num {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.quote-totals {
+    margin: 1.25rem 0 0 auto;
+    max-width: 340px;
+}
+
+.quote-totals > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.35rem 0;
+}
+
+.quote-totals .grand {
+    margin-top: 0.4rem;
+    padding: 0.7rem 0.8rem;
+    background: #0d1117;
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.quote-totals .advance {
+    color: #8957e5;
+    font-weight: 600;
+}
+
+.quote-tbq {
+    margin-top: 0.85rem;
+    font-size: 0.78rem;
+    color: #6e7781;
+}
+
+.quote-notes,
+.quote-terms {
+    margin-top: 1.5rem;
+}
+
+.quote-terms ol {
+    padding-left: 1.1rem;
+    font-size: 0.8rem;
+    color: #444c56;
+}
+
+.quote-terms li {
+    margin-bottom: 0.3rem;
+}
+
+.quote-foot {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #d0d7de;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #57606a;
+}
+
+/* Toast */
+.quote-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 90px;
+    transform: translate(-50%, 20px);
+    background: var(--card-bg);
+    border: 1px solid var(--primary);
+    color: var(--text);
+    padding: 0.7rem 1.1rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    box-shadow: var(--shadow-primary), var(--shadow-lg);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1100;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    max-width: calc(100vw - 2rem);
+}
+
+.quote-toast i {
+    color: var(--green);
+    margin-right: 0.35rem;
+}
+
+.quote-toast a {
+    color: var(--secondary);
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+.quote-toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+}
+
+/*-------------------------------------
+  Responsive
+-------------------------------------*/
+@media (max-width: 992px) {
+    .quote-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .services-container,
+    .pricing-container,
+    .quotation-container {
+        padding: 0 1rem;
+    }
+    .service-panel {
+        padding: 1.25rem 1rem;
+    }
+    .price-row {
+        grid-template-columns: 1fr 38px;
+        gap: 0.5rem 0.75rem;
+    }
+    .price-tag {
+        grid-column: 1;
+        grid-row: 2;
+        text-align: left;
+    }
+    .price-add {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+    }
+    .quote-line {
+        grid-template-columns: 1fr auto;
+        row-gap: 0.5rem;
+    }
+    .line-main {
+        grid-column: 1 / -1;
+    }
+    .line-amount {
+        text-align: right;
+    }
+    .custom-item-form {
+        grid-template-columns: 1fr 1fr;
+    }
+    .custom-item-form .q-input:first-child {
+        grid-column: 1 / -1;
+    }
+    .custom-item-form .btn {
+        grid-column: 1 / -1;
+    }
+    .q-row {
+        grid-template-columns: 1fr;
+    }
+    .quote-document {
+        padding: 1.25rem;
+        overflow-x: auto;
+    }
+    .quote-head {
+        flex-direction: column;
+    }
+    .quote-meta,
+    .quote-parties {
+        grid-template-columns: 1fr;
+    }
+    .quote-toast {
+        bottom: 80px;
+    }
+}
+
+/*-------------------------------------
+  Print: only the quotation is printed
+-------------------------------------*/
+#quote-print-root {
+    display: none;
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 14mm;
+    }
+    body.print-quote-mode {
+        background: #fff !important;
+    }
+    body.print-quote-mode::before,
+    body.print-quote-mode::after {
+        display: none !important;
+    }
+    body.print-quote-mode > *:not(#quote-print-root) {
+        display: none !important;
+    }
+    body.print-quote-mode #quote-print-root {
+        display: block !important;
+    }
+    body.print-quote-mode .quote-document {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+        max-width: none;
+        font-size: 11pt;
+    }
+    body.print-quote-mode .quote-table th,
+    body.print-quote-mode .quote-totals .grand,
+    body.print-quote-mode .quote-meta {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    body.print-quote-mode .quote-table tr {
+        break-inside: avoid;
+    }
+}
+
+/* Chatbot: keep line breaks in multi-line price replies */
+.chatbot-container .message-content {
+    white-space: pre-line;
+}
+
+/* Quotation paper: keep body text dark regardless of global p colour */
+.quote-document p,
+.quote-document li,
+.quote-document td {
+    color: #1f2328;
+}
+
+.quote-document .quote-tbq,
+.quote-document .quote-terms li {
+    color: #57606a;
+}
+
+.quote-document .quote-table small,
+.quote-document .qd-sub {
+    color: #6e7781;
+}
+
+/* Services teaser on the main page: cards are links */
+a.service-card {
+    text-decoration: none;
+}
+
+.teaser-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+/* Services page: leave room for the fixed navigation */
+.services-page .services-section {
+    padding-top: 8rem;
+}

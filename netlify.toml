@@ -1,0 +1,8 @@
+# Optional: deploy the static website (frontend/) on Netlify.
+# Set these in Netlify -> Site configuration -> Environment variables (none are secrets):
+#   API_BASE_URL, WHATSAPP_NUMBER, FORMSPREE_FORM_ID, MAX_FILE_MB, MAX_FILES_PER_REQUEST
+# The backend (backend/) cannot run on Netlify static hosting; deploy it on Render, Railway, Fly.io or a VPS.
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "."

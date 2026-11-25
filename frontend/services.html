@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services, Pricing &amp; Work Tracking | Imantha Umesh</title>
+    <meta name="description" content="Web and mobile app development, IT support, academic help and digital services in Sri Lanka. Transparent LKR pricing, instant quotations, file sending and live work tracking.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/services.css">
+    <link rel="stylesheet" href="css/tracking.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="services-page">
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">IU</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Portfolio</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#quotation" class="nav-link nav-quote-link">Get Quote <span class="quote-count js-quote-count">0</span></a>
+                <a href="#track" class="nav-link">Track</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <a href="index.html" class="mobile-nav-link">Portfolio</a>
+            <a href="#services" class="mobile-nav-link">Services</a>
+            <a href="#pricing" class="mobile-nav-link">Pricing</a>
+            <a href="#quotation" class="mobile-nav-link">Get Quote <span class="quote-count js-quote-count">0</span></a>
+            <a href="#track" class="mobile-nav-link">Track</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="services-container">
+            <div class="section-header svc-reveal">
+                <h2 class="section-title">My <span class="highlight">Services</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">TechAssist LK &mdash; Learn &middot; Build &middot; Grow. Software development, IT support, academic help and digital services for students, professionals and businesses across Sri Lanka.</p>
+            </div>
+
+            <div id="service-overview" class="service-overview"></div>
+
+            <div class="why-strip">
+                <div class="why-item svc-reveal"><i class="fas fa-tags"></i><div><strong>Affordable Prices</strong><span>Fair Sri Lankan market rates</span></div></div>
+                <div class="why-item svc-reveal"><i class="fas fa-clock"></i><div><strong>On-Time Delivery</strong><span>Clear timelines, no surprises</span></div></div>
+                <div class="why-item svc-reveal"><i class="fas fa-screwdriver-wrench"></i><div><strong>Tailored Solutions</strong><span>Built around your needs</span></div></div>
+                <div class="why-item svc-reveal"><i class="fas fa-headset"></i><div><strong>Long-Term Support</strong><span>Friendly help after delivery</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="pricing-container">
+            <div class="section-header svc-reveal">
+                <h2 class="section-title">Transparent <span class="highlight">Pricing</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Starting prices in Sri Lankan Rupees (LKR). Tap the + button on any service to add it to your quotation.</p>
+            </div>
+
+            <div id="service-tabs" class="service-tabs" role="tablist" aria-label="Service categories"></div>
+            <div id="service-panel" class="service-panel" role="tabpanel"></div>
+
+            <div class="pricing-note">
+                <i class="fas fa-circle-info"></i>
+                <p>The final price depends on scope, complexity and time required. Domain, hosting, paid software licences, travel and third-party costs are charged separately where applicable. Only genuine licensed software is used. Need something not listed? Add it as a custom item or just ask.</p>
+            </div>
+
+            <div class="pricing-cta">
+                <a href="#quotation" class="btn primary-btn">Build My Quotation <i class="fas fa-file-invoice"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quotation Section -->
+    <section id="quotation" class="quotation-section">
+        <div class="quotation-container">
+            <div class="section-header svc-reveal">
+                <h2 class="section-title">Get a <span class="highlight">Quotation</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Pick your services, add your details and get an instant quotation you can download as a PDF or send to me on WhatsApp or email.</p>
+            </div>
+
+            <div class="quote-steps">
+                <div class="quote-step"><strong>Pick services</strong>Use the + buttons above</div>
+                <div class="quote-step"><strong>Adjust</strong>Set hours or quantity</div>
+                <div class="quote-step"><strong>Add details</strong>Your name and contacts</div>
+                <div class="quote-step"><strong>Send</strong>PDF, WhatsApp or email</div>
+            </div>
+
+            <div class="quote-grid">
+                <div class="quote-col">
+                    <div class="quote-card">
+                        <h3><i class="fas fa-list-check"></i> Your services</h3>
+                        <div id="quote-empty" class="quote-empty">
+                            No services added yet. Browse the <a href="#pricing">price list</a> and tap the + button, or add a custom item below.
+                        </div>
+                        <div id="quote-lines"></div>
+
+                        <form id="custom-item-form" class="custom-item-form" autocomplete="off">
+                            <input type="text" id="c-name" class="q-input" placeholder="Custom item, e.g. Inventory system for my shop" maxlength="120" aria-label="Custom item description">
+                            <input type="number" id="c-price" class="q-input" placeholder="Price (Rs.)" min="0" step="100" aria-label="Custom item price (leave empty if unknown)">
+                            <select id="c-unit" class="q-select" aria-label="Custom item price unit">
+                                <option value="fixed">per job</option>
+                                <option value="hour">per hour</option>
+                                <option value="month">per month</option>
+                            </select>
+                            <button type="submit" class="btn outline-btn btn-sm">Add <i class="fas fa-plus"></i></button>
+                        </form>
+                    </div>
+
+                    <div class="quote-card">
+                        <h3><i class="fas fa-user"></i> Client details</h3>
+                        <div class="q-row">
+                            <div class="q-field">
+                                <label for="q-name">Name *</label>
+                                <input type="text" id="q-name" class="q-input" autocomplete="name" maxlength="80">
+                            </div>
+                            <div class="q-field">
+                                <label for="q-org">School / company (optional)</label>
+                                <input type="text" id="q-org" class="q-input" autocomplete="organization" maxlength="80">
+                            </div>
+                        </div>
+                        <div class="q-row">
+                            <div class="q-field">
+                                <label for="q-email">Email</label>
+                                <input type="email" id="q-email" class="q-input" autocomplete="email" maxlength="100">
+                            </div>
+                            <div class="q-field">
+                                <label for="q-phone">Phone / WhatsApp</label>
+                                <input type="tel" id="q-phone" class="q-input" autocomplete="tel" maxlength="30">
+                            </div>
+                        </div>
+                        <div class="q-field">
+                            <label for="q-notes">Project notes (optional)</label>
+                            <textarea id="q-notes" class="q-textarea" maxlength="800" placeholder="Tell me briefly what you need, your deadline, and any references."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-col">
+                    <div class="quote-card">
+                        <h3><i class="fas fa-sliders"></i> Options</h3>
+                        <div class="q-field">
+                            <label for="q-urgency">Delivery speed</label>
+                            <select id="q-urgency" class="q-select">
+                                <option value="standard">Standard delivery</option>
+                                <option value="priority">Priority (within 48 hours) +25%</option>
+                                <option value="express">Express (within 24 hours) +50%</option>
+                            </select>
+                        </div>
+                        <label class="q-check">
+                            <input type="checkbox" id="q-student">
+                            <span>I'm a school or university student (10% off academic and document services)</span>
+                        </label>
+                    </div>
+
+                    <div class="quote-card">
+                        <h3><i class="fas fa-calculator"></i> Summary</h3>
+                        <div class="quote-summary-rows">
+                            <div><span>Subtotal</span><span id="sum-subtotal">Rs. 0</span></div>
+                            <div><span id="sum-surcharge-label">Urgency surcharge</span><span id="sum-surcharge">Rs. 0</span></div>
+                            <div><span>Student discount</span><span id="sum-discount">Rs. 0</span></div>
+                            <div class="sum-total"><span>Estimated total</span><span id="sum-total">Rs. 0</span></div>
+                        </div>
+                        <p id="sum-advance" class="sum-note"></p>
+                        <p id="sum-tbq" class="sum-note warn" style="display:none"></p>
+
+                        <div class="quote-btn-row">
+                            <button type="button" id="btn-generate" class="btn primary-btn">Generate Quotation <i class="fas fa-file-invoice"></i></button>
+                            <button type="button" id="btn-reset" class="btn ghost-btn btn-sm">Clear</button>
+                        </div>
+                        <div id="quote-status" class="quote-status" role="status" aria-live="polite"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="quote-preview" class="quote-preview">
+                <div id="quote-actions" class="quote-actions">
+                    <button type="button" id="btn-print" class="btn primary-btn btn-sm">Download / Print PDF <i class="fas fa-file-pdf"></i></button>
+                    <button type="button" id="btn-whatsapp" class="btn wa-btn btn-sm">Send on WhatsApp <i class="fab fa-whatsapp"></i></button>
+                    <button type="button" id="btn-email" class="btn outline-btn btn-sm">Send by Email <i class="fas fa-envelope"></i></button>
+                    <button type="button" id="btn-copy" class="btn ghost-btn btn-sm">Copy Text <i class="fas fa-copy"></i></button>
+                    <button type="button" id="btn-submit-request" class="btn primary-btn btn-sm">Submit as Request + Files <i class="fas fa-paper-plane"></i></button>
+                </div>
+                <div id="quote-document" class="quote-document"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Track Your Work / Send Files Section -->
+    <section id="track" class="track-section">
+        <div class="track-container">
+            <div class="section-header svc-reveal">
+                <h2 class="section-title">Track Your <span class="highlight">Work</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Already working with me? Enter your tracking code to follow your job live. New here? Send your request and any files, and I will reply with a tracking code once I accept it.</p>
+            </div>
+
+            <div class="track-tabs" role="tablist" aria-label="Tracking options">
+                <button type="button" class="track-tab active" role="tab" data-tab="track" aria-selected="true"><i class="fas fa-location-crosshairs"></i> Track my work</button>
+                <button type="button" class="track-tab" role="tab" data-tab="send" aria-selected="false"><i class="fas fa-paper-plane"></i> Send a request &amp; files</button>
+            </div>
+
+            <!-- Track -->
+            <div id="pane-track" class="track-pane" role="tabpanel">
+                <form id="track-form" class="track-form" autocomplete="off">
+                    <label for="track-code" class="sr-only">Tracking code</label>
+                    <input type="text" id="track-code" class="q-input track-code-input" placeholder="TAL-XXXXX-XXXXX" maxlength="40" spellcheck="false" autocapitalize="characters">
+                    <button type="submit" id="track-submit" class="btn primary-btn">Track <i class="fas fa-magnifying-glass"></i></button>
+                </form>
+                <p class="track-help">Your tracking code was sent to you on WhatsApp or e-mail when your work was accepted.</p>
+                <div id="track-error" class="track-error" role="alert" hidden></div>
+
+                <div id="track-result" class="track-result" hidden>
+                    <div class="tr-head">
+                        <div>
+                            <h3 id="tr-title"></h3>
+                            <p id="tr-greeting" class="tr-greeting"></p>
+                        </div>
+                        <div class="tr-head-side">
+                            <span id="tr-status" class="tr-badge"></span>
+                            <span id="tr-live" class="tr-live poll">Auto-refresh</span>
+                        </div>
+                    </div>
+
+                    <div class="tr-progress-row">
+                        <div id="tr-progress" class="tr-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                            <div id="tr-progress-bar" class="tr-progress-bar"></div>
+                        </div>
+                        <span id="tr-progress-text" class="tr-progress-text">0%</span>
+                    </div>
+
+                    <ol id="tr-steps" class="tr-steps"></ol>
+
+                    <div class="tr-meta">
+                        <div><span>Tracking code</span><strong><code id="tr-code"></code> <button type="button" id="tr-copy" class="fp-remove" aria-label="Copy tracking code"><i class="fas fa-copy"></i></button></strong></div>
+                        <div><span>Expected by</span><strong id="tr-due"></strong></div>
+                        <div><span>Last update</span><strong id="tr-updated"></strong></div>
+                    </div>
+
+                    <div id="tr-deliverables-wrap" class="tr-block" hidden>
+                        <h4><i class="fas fa-gift"></i> Ready to download</h4>
+                        <ul id="tr-deliverables" class="tr-files"></ul>
+                    </div>
+
+                    <div class="tr-block">
+                        <h4><i class="fas fa-clock-rotate-left"></i> Updates</h4>
+                        <ul id="tr-timeline" class="tr-timeline"></ul>
+                    </div>
+
+                    <div id="tr-more-wrap" class="tr-block" hidden>
+                        <h4><i class="fas fa-paperclip"></i> Send more files</h4>
+                        <div id="tr-more-picker"></div>
+                        <button type="button" id="tr-more-send" class="btn outline-btn btn-sm">Send files <i class="fas fa-upload"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Send request -->
+            <div id="pane-send" class="track-pane" role="tabpanel" hidden>
+                <form id="request-form" class="request-form" novalidate>
+                    <div id="rq-quote" class="rq-quote" hidden></div>
+
+                    <div class="q-row">
+                        <div class="q-field"><label for="rq-name">Your name *</label><input type="text" id="rq-name" class="q-input" required minlength="2" maxlength="80" autocomplete="name"></div>
+                        <div class="q-field"><label for="rq-org">School / company (optional)</label><input type="text" id="rq-org" class="q-input" maxlength="80" autocomplete="organization"></div>
+                    </div>
+                    <div class="q-row">
+                        <div class="q-field"><label for="rq-phone">WhatsApp / phone</label><input type="tel" id="rq-phone" class="q-input" maxlength="30" autocomplete="tel"></div>
+                        <div class="q-field"><label for="rq-email">E-mail</label><input type="email" id="rq-email" class="q-input" maxlength="120" autocomplete="email"></div>
+                    </div>
+                    <div class="q-field"><label for="rq-title">What do you need? *</label><input type="text" id="rq-title" class="q-input" required minlength="3" maxlength="150" placeholder="e.g. Website for my shop, Python assignment help, Windows installation"></div>
+                    <div class="q-field"><label for="rq-details">Details (optional)</label><textarea id="rq-details" class="q-textarea" maxlength="2000" placeholder="Deadline, requirements, links, anything that helps me understand the job."></textarea></div>
+
+                    <div class="q-field">
+                        <label>Files (optional)</label>
+                        <div id="rq-picker"></div>
+                    </div>
+
+                    <div class="rq-hp" aria-hidden="true"><label for="rq-website">Leave this field empty</label><input type="text" id="rq-website" tabindex="-1" autocomplete="off"></div>
+
+                    <label class="q-check">
+                        <input type="checkbox" id="rq-consent">
+                        <span>I agree to share these details and files with Imantha Umesh so he can review my request. Files are stored privately and used only for this work.</span>
+                    </label>
+
+                    <div class="quote-btn-row">
+                        <button type="submit" id="rq-submit" class="btn primary-btn">Send request <i class="fas fa-paper-plane"></i></button>
+                    </div>
+                    <div id="rq-status" class="rq-status" role="status" aria-live="polite"></div>
+                </form>
+
+                <div id="request-done" class="request-done" hidden>
+                    <i class="fas fa-circle-check"></i>
+                    <h3>Request received</h3>
+                    <p>Your reference is <strong id="rq-ref"></strong>. I will review it and contact you on WhatsApp or e-mail. If I accept the work, you will receive a <strong>tracking code</strong> to follow its progress here.</p>
+                    <button type="button" id="rq-again" class="btn ghost-btn btn-sm">Send another request</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <a href="index.html">IU</a>
+                </div>
+                <div class="footer-nav">
+                    <a href="index.html" class="footer-link">Portfolio</a>
+                    <a href="#services" class="footer-link">Services</a>
+                    <a href="#pricing" class="footer-link">Pricing</a>
+                    <a href="#quotation" class="footer-link">Get Quote</a>
+                    <a href="#track" class="footer-link">Track Your Work</a>
+                    <a href="index.html#contact" class="footer-link">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Imantha Umesh. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top" class="back-to-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- WhatsApp Contact Button -->
+    <a href="https://wa.me/94704124816" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" title="Contact me on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span>Chat with me</span>
+    </a>
+
+    <!-- AI Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle">
+            <span class="toggle-icon"><i class="fas fa-robot"></i></span>
+            <span class="toggle-close"><i class="fas fa-times"></i></span>
+        </div>
+
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-title">
+                    <div class="bot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="bot-info">
+                        <h3>Portfolio AI</h3>
+                        <p>Typically replies instantly</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chatbot-messages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        Hi there! I'm Imantha's personal AI assistant. How can I help you today?
+                    </div>
+                </div>
+            </div>
+
+            <div class="chatbot-input">
+                <form id="chatbot-form">
+                    <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off">
+                    <button type="submit" class="send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="js/vendor/supabase.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/tracking.js"></script>
+    <script src="js/page-nav.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/site.js"></script>
+</body>
+
+</html>

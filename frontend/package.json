@@ -1,0 +1,12 @@
+{
+  "name": "imantha-portfolio-frontend",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Static portfolio website (index.html + services.html). No runtime dependencies.",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node scripts/build-config.js",
+    "build:config": "node scripts/build-config.js",
+    "dev": "node scripts/build-config.js && node scripts/dev-server.js"
+  }
+}

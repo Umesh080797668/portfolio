@@ -1,11 +1,9 @@
-# Secrets and local config - NEVER commit
+# Secrets - NEVER commit (each part has its own .env, see the .env.example files)
 .env
 .env.*
 !.env.example
 js/env.js
 
-# Dependencies and generated files
 node_modules/
-/config.js
 npm-debug.log*
 .DS_Store
