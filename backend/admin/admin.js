@@ -156,7 +156,11 @@
             });
             btn.disabled = false;
             $('#login-password').value = '';
-            if (error) { msg.textContent = 'Sign in failed. Check your e-mail and password.'; return; }
+            if (error) {
+                console.error('Sign in error:', error);
+                msg.textContent = error.message || 'Sign in failed. Check your e-mail and password.';
+                return;
+            }
             afterAuth();
         });
 
